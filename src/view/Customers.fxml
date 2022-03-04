@@ -3,17 +3,17 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomersController">
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomersController">
    <children>
-      <TableView layoutX="29.0" layoutY="62.0" prefHeight="225.0" prefWidth="541.0">
+      <TableView layoutX="29.0" layoutY="62.0" prefHeight="313.0" prefWidth="739.0">
         <columns>
           <TableColumn prefWidth="75.0" text="C1" />
           <TableColumn prefWidth="75.0" text="C2" />
         </columns>
       </TableView>
-      <Button layoutX="29.0" layoutY="310.0" mnemonicParsing="false" text="Add" />
-      <Button layoutX="520.0" layoutY="310.0" mnemonicParsing="false" text="Update" />
-      <Button layoutX="430.0" layoutY="310.0" mnemonicParsing="false" text="Delete" />
-       <Button layoutX="445.0" layoutY="350.0" mnemonicParsing="false" onAction="#onActionReturnToMainMenuButtonPressed" text="Return to Main Menu" />
+      <Button layoutX="29.0" layoutY="400.0" mnemonicParsing="false" text="Add" />
+      <Button layoutX="634.0" layoutY="400.0" mnemonicParsing="false" text="Update" />
+      <Button layoutX="717.0" layoutY="400.0" mnemonicParsing="false" text="Delete" />
+       <Button layoutX="638.0" layoutY="450.0" mnemonicParsing="false" onAction="#onActionReturnToMainMenuButtonPressed" text="Return to Main Menu" />
    </children>
 </AnchorPane>

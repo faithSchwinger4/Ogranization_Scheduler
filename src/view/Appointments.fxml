@@ -5,15 +5,21 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AppointmentsController">
     <children>
-        <TableView layoutX="29.0" layoutY="62.0" prefHeight="225.0" prefWidth="541.0">
+        <TableView layoutX="24.0" layoutY="62.0" prefHeight="284.0" prefWidth="748.0">
             <columns>
                 <TableColumn prefWidth="75.0" text="C1" />
                 <TableColumn prefWidth="75.0" text="C2" />
             </columns>
         </TableView>
-        <Button layoutX="29.0" layoutY="310.0" mnemonicParsing="false" text="Add" />
-        <Button layoutX="520.0" layoutY="310.0" mnemonicParsing="false" text="Update" />
-        <Button layoutX="430.0" layoutY="310.0" mnemonicParsing="false" text="Delete" />
-      <Button layoutX="445.0" layoutY="350.0" mnemonicParsing="false" onAction="#onActionReturnToMainMenuButtonPressed" text="Return to Main Menu" />
+        <Button layoutX="23.0" layoutY="367.0" mnemonicParsing="false" text="Add" />
+        <Button layoutX="642.0" layoutY="367.0" mnemonicParsing="false" text="Update" />
+        <Button layoutX="721.0" layoutY="367.0" mnemonicParsing="false" text="Delete" />
+      <Button layoutX="642.0" layoutY="545.0" mnemonicParsing="false" onAction="#onActionReturnToMainMenuButtonPressed" text="Return to Main Menu" />
+      <ComboBox layoutX="23.0" layoutY="484.0" prefWidth="150.0" />
+      <ComboBox layoutX="211.0" layoutY="484.0" prefWidth="150.0" />
+      <Label layoutX="28.0" layoutY="449.0" text="Appointment Type" />
+      <Label layoutX="211.0" layoutY="449.0" text="Month" />
+      <Label layoutX="400.0" layoutY="449.0" text="Total Appointments" />
+      <Label fx:id="totalAppointmentCount" layoutX="400.0" layoutY="490.0" />
     </children>
 </AnchorPane>
