@@ -14,7 +14,7 @@ public class MainMenuController {
         Parent root = FXMLLoader.load(getClass().getResource("/view/Customers.fxml"));
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 800, 500);
-        stage.setTitle("Main Menu");
+        stage.setTitle("Customers");
         stage.setScene(scene);
         stage.show();
     }
@@ -23,11 +23,17 @@ public class MainMenuController {
         Parent root = FXMLLoader.load(getClass().getResource("/view/Appointments.fxml"));
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 800, 600);
-        stage.setTitle("Main Menu");
+        stage.setTitle("Appointments");
         stage.setScene(scene);
         stage.show();
     }
 
-    public void onActionSchedulesButtonPressed(ActionEvent actionEvent) {
+    public void onActionSchedulesButtonPressed(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/view/Schedules.fxml"));
+        Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 800, 600);
+        stage.setTitle("Schedules");
+        stage.setScene(scene);
+        stage.show();
     }
 }
