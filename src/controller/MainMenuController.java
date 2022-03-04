@@ -13,7 +13,7 @@ public class MainMenuController {
     public void onActionCustomersButtonPressed(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/Customers.fxml"));
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 800, 500);
+        Scene scene = new Scene(root, 1000, 500);
         stage.setTitle("Customers");
         stage.setScene(scene);
         stage.show();
@@ -22,7 +22,7 @@ public class MainMenuController {
     public void onActionAppointmentsButtonPressed(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/Appointments.fxml"));
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 800, 600);
+        Scene scene = new Scene(root, 1000, 600);
         stage.setTitle("Appointments");
         stage.setScene(scene);
         stage.show();

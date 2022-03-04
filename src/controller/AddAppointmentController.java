@@ -13,7 +13,16 @@ public class AddAppointmentController {
     public void onActionCancelButtonPressed(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/Appointments.fxml"));
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 800, 600);
+        Scene scene = new Scene(root, 1000, 600);
+        stage.setTitle("Appointments");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void onActionSaveButtonPressed(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/view/Appointments.fxml"));
+        Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 1000, 600);
         stage.setTitle("Appointments");
         stage.setScene(scene);
         stage.show();

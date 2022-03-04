@@ -16,7 +16,7 @@ public class UpdateCustomerController {
     public void onActionCancelButtonPressed(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/Customers.fxml"));
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 800, 500);
+        Scene scene = new Scene(root, 1000, 500);
         stage.setTitle("Customers");
         stage.setScene(scene);
         stage.show();
@@ -25,7 +25,7 @@ public class UpdateCustomerController {
     public void onActionSaveButtonPressed(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/Customers.fxml"));
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 800, 500);
+        Scene scene = new Scene(root, 1000, 500);
         stage.setTitle("Customers");
         stage.setScene(scene);
         stage.show();

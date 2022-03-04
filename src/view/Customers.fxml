@@ -2,18 +2,29 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomersController">
+<AnchorPane prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomersController">
    <children>
-      <TableView layoutX="29.0" layoutY="62.0" prefHeight="313.0" prefWidth="739.0">
+      <TableView layoutX="29.0" layoutY="77.0" prefHeight="313.0" prefWidth="946.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
+          <TableColumn prefWidth="96.0" text="Customer ID" />
+          <TableColumn prefWidth="138.0" text="Name" />
+            <TableColumn prefWidth="253.0" text="Address" />
+            <TableColumn prefWidth="92.0" text="Country" />
+            <TableColumn prefWidth="131.0" text="Division" />
+            <TableColumn prefWidth="98.0" text="Postal Code" />
+            <TableColumn prefWidth="137.0" text="Phone Number" />
         </columns>
       </TableView>
-      <Button layoutX="29.0" layoutY="400.0" mnemonicParsing="false" onAction="#onActionAddCustomerButtonPressed" text="Add" />
-      <Button layoutX="634.0" layoutY="400.0" mnemonicParsing="false" onAction="#onActionUpdateCustomerButtonPressed" text="Update" />
-      <Button layoutX="717.0" layoutY="400.0" mnemonicParsing="false" text="Delete" />
-       <Button layoutX="638.0" layoutY="450.0" mnemonicParsing="false" onAction="#onActionReturnToMainMenuButtonPressed" text="Return to Main Menu" />
+      <Button layoutX="29.0" layoutY="405.0" mnemonicParsing="false" onAction="#onActionAddCustomerButtonPressed" text="Add" />
+      <Button layoutX="850.0" layoutY="405.0" mnemonicParsing="false" onAction="#onActionUpdateCustomerButtonPressed" text="Update" />
+      <Button layoutX="920.0" layoutY="405.0" mnemonicParsing="false" text="Delete" />
+       <Button layoutX="840.0" layoutY="455.0" mnemonicParsing="false" onAction="#onActionReturnToMainMenuButtonPressed" text="Return to Main Menu" />
+      <Label layoutX="34.0" layoutY="36.0" text="Customers">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
