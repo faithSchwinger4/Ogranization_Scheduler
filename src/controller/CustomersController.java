@@ -18,4 +18,22 @@ public class CustomersController {
         stage.setScene(scene);
         stage.show();
     }
+
+    public void onActionAddCustomerButtonPressed(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/view/AddCustomer.fxml"));
+        Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 400, 550);
+        stage.setTitle("Add Customer");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void onActionUpdateCustomerButtonPressed(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/view/UpdateCustomer.fxml"));
+        Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 400, 550);
+        stage.setTitle("Update Customer");
+        stage.setScene(scene);
+        stage.show();
+    }
 }

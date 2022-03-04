@@ -11,8 +11,8 @@
           <TableColumn prefWidth="75.0" text="C2" />
         </columns>
       </TableView>
-      <Button layoutX="29.0" layoutY="400.0" mnemonicParsing="false" text="Add" />
-      <Button layoutX="634.0" layoutY="400.0" mnemonicParsing="false" text="Update" />
+      <Button layoutX="29.0" layoutY="400.0" mnemonicParsing="false" onAction="#onActionAddCustomerButtonPressed" text="Add" />
+      <Button layoutX="634.0" layoutY="400.0" mnemonicParsing="false" onAction="#onActionUpdateCustomerButtonPressed" text="Update" />
       <Button layoutX="717.0" layoutY="400.0" mnemonicParsing="false" text="Delete" />
        <Button layoutX="638.0" layoutY="450.0" mnemonicParsing="false" onAction="#onActionReturnToMainMenuButtonPressed" text="Return to Main Menu" />
    </children>
