@@ -21,4 +21,15 @@ public class AddCustomerController {
         stage.setScene(scene);
         stage.show();
     }
+
+    public void onActionSaveButtonPressed(ActionEvent actionEvent) throws IOException {
+        // code to create new customer, save data
+
+        Parent root = FXMLLoader.load(getClass().getResource("/view/Customers.fxml"));
+        Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 800, 500);
+        stage.setTitle("Customers");
+        stage.setScene(scene);
+        stage.show();
+    }
 }

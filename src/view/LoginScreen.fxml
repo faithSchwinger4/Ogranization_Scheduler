@@ -16,5 +16,6 @@
       </Label>
       <Label layoutX="226.0" layoutY="216.0" text="Pasword" />
       <Label layoutX="226.0" layoutY="145.0" text="Username" />
+      <Label fx:id="localTimeZoneLabel" layoutX="512.0" layoutY="350.0" text="...timezone" />
    </children>
 </AnchorPane>
