@@ -21,4 +21,22 @@ public class AppointmentsController {
         stage.setScene(scene);
         stage.show();
     }
+
+    public void onActionAddAppointment(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/view/AddAppointment.fxml"));
+        Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 400, 550);
+        stage.setTitle("Add Appointment");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void onActionUpdateAppointment(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/view/UpdateAppointment.fxml"));
+        Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 400, 550);
+        stage.setTitle("Update Appointment");
+        stage.setScene(scene);
+        stage.show();
+    }
 }

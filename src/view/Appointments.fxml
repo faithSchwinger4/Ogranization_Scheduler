@@ -11,8 +11,8 @@
                 <TableColumn prefWidth="75.0" text="C2" />
             </columns>
         </TableView>
-        <Button layoutX="23.0" layoutY="367.0" mnemonicParsing="false" text="Add" />
-        <Button layoutX="642.0" layoutY="367.0" mnemonicParsing="false" text="Update" />
+        <Button layoutX="23.0" layoutY="367.0" mnemonicParsing="false" onAction="#onActionAddAppointment" text="Add" />
+        <Button layoutX="642.0" layoutY="367.0" mnemonicParsing="false" onAction="#onActionUpdateAppointment" text="Update" />
         <Button layoutX="721.0" layoutY="367.0" mnemonicParsing="false" text="Delete" />
       <Button layoutX="642.0" layoutY="545.0" mnemonicParsing="false" onAction="#onActionReturnToMainMenuButtonPressed" text="Return to Main Menu" />
       <ComboBox layoutX="23.0" layoutY="484.0" prefWidth="150.0" />
