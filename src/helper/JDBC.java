@@ -15,6 +15,7 @@ public abstract class JDBC {
     private static final String password = "Passw0rd!";
     public static Connection connection;
 
+
     public static void openConnection(){
         try{
             Class.forName(driver); //locates the driver
