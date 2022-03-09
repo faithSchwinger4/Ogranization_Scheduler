@@ -29,6 +29,7 @@ public class LoginScreenController implements Initializable {
         // take in username, password
         // check db for validity
         // if valid, next screen
+
         Parent root = FXMLLoader.load(getClass().getResource("/view/MainMenu.fxml"));
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 400, 500);
