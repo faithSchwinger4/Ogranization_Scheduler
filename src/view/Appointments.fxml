@@ -6,18 +6,18 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AppointmentsController">
     <children>
-        <TableView layoutX="24.0" layoutY="100.0" prefHeight="306.0" prefWidth="947.0">
+        <TableView fx:id="appointmentTable" layoutX="24.0" layoutY="100.0" prefHeight="306.0" prefWidth="947.0">
             <columns>
-                <TableColumn prefWidth="102.0" text="Appointment ID" />
-                <TableColumn prefWidth="75.0" text="Title" />
-            <TableColumn prefWidth="98.0" text="Description" />
-            <TableColumn prefWidth="98.0" text="Location" />
-            <TableColumn prefWidth="95.0" text="Contact" />
-            <TableColumn prefWidth="87.0" text="Type" />
-            <TableColumn prefWidth="127.0" text="Start Date and Time" />
-            <TableColumn prefWidth="120.0" text="End Date and Time" />
-            <TableColumn prefWidth="83.0" text="Customer ID" />
-            <TableColumn minWidth="0.0" prefWidth="61.0" text="User ID" />
+                <TableColumn fx:id="appointmentId" prefWidth="102.0" text="Appointment ID" />
+                <TableColumn fx:id="title" prefWidth="75.0" text="Title" />
+            <TableColumn fx:id="description" prefWidth="98.0" text="Description" />
+            <TableColumn fx:id="location" prefWidth="98.0" text="Location" />
+            <TableColumn fx:id="contact" prefWidth="95.0" text="Contact" />
+            <TableColumn fx:id="type" prefWidth="87.0" text="Type" />
+            <TableColumn fx:id="startDateAndTime" prefWidth="127.0" text="Start Date and Time" />
+            <TableColumn fx:id="endDateAndTime" prefWidth="120.0" text="End Date and Time" />
+            <TableColumn fx:id="customerId" prefWidth="83.0" text="Customer ID" />
+            <TableColumn fx:id="userId" minWidth="0.0" prefWidth="61.0" text="User ID" />
             </columns>
         </TableView>
         <Button layoutX="23.0" layoutY="420.0" mnemonicParsing="false" onAction="#onActionAddAppointment" text="Add" />
