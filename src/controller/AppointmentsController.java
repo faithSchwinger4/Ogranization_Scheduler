@@ -1,5 +1,6 @@
 package controller;
 
+import helper.AppointmentQuery;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,11 +11,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Appointment;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.ResourceBundle;
@@ -48,9 +51,23 @@ public class AppointmentsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // get observable list of all appointments
+        try {
+            appointmentTable.setItems(AppointmentQuery.getAllAppointments());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         //fill each column
-
+        appointmentId.setCellValueFactory(new PropertyValueFactory<>("appointmentId"));
+        title.setCellValueFactory(new PropertyValueFactory<>("title"));
+        description.setCellValueFactory(new PropertyValueFactory<>("description"));
+        location.setCellValueFactory(new PropertyValueFactory<>("location"));
+        contact.setCellValueFactory(new PropertyValueFactory<>("contact"));
+        type.setCellValueFactory(new PropertyValueFactory<>("type"));
+        startDateAndTime.setCellValueFactory(new PropertyValueFactory<>("startDateAndTime")); ;
+        endDateAndTime.setCellValueFactory(new PropertyValueFactory<>("endDateAndTime")); ;
+        customerId.setCellValueFactory(new PropertyValueFactory<>("customerId")); ;
+        userId.setCellValueFactory(new PropertyValueFactory<>("userId")); ;
     }
 
     public void onActionReturnToMainMenuButtonPressed(ActionEvent actionEvent) throws IOException {
