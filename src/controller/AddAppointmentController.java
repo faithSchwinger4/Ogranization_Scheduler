@@ -63,7 +63,7 @@ public class AddAppointmentController implements Initializable {
         String type = typeField.getText();
         String contactName = (String) contactField.getValue();
         //LocalDate startDate = startDatePicker.getValue();
-        Timestamp startDateTime = ;
+        //Timestamp startDateTime = ;
 
         //AppointmentQuery.insert();
 
@@ -76,8 +76,6 @@ public class AddAppointmentController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-
-    public Time convertToTime
 
     public void onActionCancelButtonPressed(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/Appointments.fxml"));

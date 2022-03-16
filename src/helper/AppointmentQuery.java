@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import model.Appointment;
 
 import java.sql.*;
+import java.time.LocalDateTime;
 
 public class AppointmentQuery {
 
@@ -21,17 +22,18 @@ public class AppointmentQuery {
             String description = rs.getString("Description");
             String location = rs.getString("Location");
             String type = rs.getString("Type");
-            Timestamp start = rs.getTimestamp("Start");
-            Timestamp end = rs.getTimestamp("End");
-            Timestamp createDate = rs.getTimestamp("Create_Date");
+            LocalDateTime start = rs.getTimestamp("Start").toLocalDateTime();
+            LocalDateTime end = rs.getTimestamp("End").toLocalDateTime();
+            LocalDateTime createDate = rs.getTimestamp("Create_Date").toLocalDateTime();
             String createdBy = rs.getString("Created_By");
-            Timestamp lastUpdate = rs.getTimestamp("Last_Update");
+            LocalDateTime lastUpdate = rs.getTimestamp("Last_Update").toLocalDateTime();
             String lastUpdatedBy = rs.getString("Last_Updated_By");
             int customerId = rs.getInt("Customer_ID");
             int userId = rs.getInt("User_ID");
             int contactId = rs.getInt("Contact_ID");
             String contactName = rs.getString("Contact_Name");
-            Appointment newAppointment = new Appointment(appointmentId, title, description, location, type, start, end, createDate, createdBy, lastUpdate, lastUpdatedBy, customerId, userId, contactId, contactName);
+            Appointment newAppointment = new Appointment(appointmentId, title, description, location, type, start, end,
+                    createDate, createdBy, lastUpdate, lastUpdatedBy, customerId, userId, contactId, contactName);
             allAppointments.add(newAppointment);
         }
         return allAppointments;
@@ -42,7 +44,8 @@ public class AppointmentQuery {
                              String lastUpdatedBy, int customerId, int userId, int contactId) throws SQLException {
 
         String sql = "INSERT INTO Appointments (Title, Description, Location, Type, Start, End, Create_Date, " +
-                "Created_By, Last_Updated_By, Customer_ID, User_ID, Contact_ID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "Created_By, Last_Updated_By, Customer_ID, User_ID, Contact_ID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+                "?, ?, ?)";
 
         PreparedStatement ps = JDBC.connection.prepareStatement(sql);
         ps.setString(1, title);
