@@ -46,7 +46,7 @@
             <TextField disable="true" editable="false" GridPane.columnIndex="1" />
             <TextField fx:id="titleField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <ComboBox fx:id="contactField" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <DatePicker fx:id="startDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <TextField fx:id="descriptionField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="locationField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <TextField fx:id="typeField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
@@ -54,9 +54,9 @@
             <TextField fx:id="userIdField" GridPane.columnIndex="1" GridPane.rowIndex="11" />
             <Label text="Start Time" GridPane.rowIndex="7" />
             <Label text="End Time" GridPane.rowIndex="9" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="9" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <TextField fx:id="endTimeField" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <TextField fx:id="startTimeField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <DatePicker fx:id="endDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="8" />
          </children>
       </GridPane>
     </children>
