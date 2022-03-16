@@ -35,6 +35,23 @@ public class AppointmentQuery {
             allAppointments.add(newAppointment);
         }
         return allAppointments;
+    }
+
+    public static int insert(int appointmentId, String title, String description, String location, String type,
+                             Timestamp start, Timestamp end, Timestamp createDate, String createdBy, Timestamp ) {
+
+        return ;
+    }
+
+    public static int read() {
+
+    }
+
+    public static int update() {
+
+    }
+
+    public static int delete() {
 
     }
 }
