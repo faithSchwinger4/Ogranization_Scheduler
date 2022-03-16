@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.scene.text.Font?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controller.UpdateAppointmentController"
-            prefHeight="550.0" prefWidth="400.0">
+<AnchorPane prefHeight="550.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UpdateAppointmentController">
     <children>
         <Button layoutX="300.0" layoutY="481.0" mnemonicParsing="false" onAction="#onActionCancelButtonPressed" text="Cancel" />
         <Button layoutX="240.0" layoutY="481.0" mnemonicParsing="false" onAction="#onActionSaveButtonPressed" text="Save" />
@@ -32,7 +26,9 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
@@ -41,22 +37,26 @@
                 <Label text="Title" GridPane.rowIndex="1" />
                 <Label text="Description" GridPane.rowIndex="2" />
                 <Label text="Location" GridPane.rowIndex="3" />
-                <Label text="Contact" GridPane.rowIndex="4" />
-                <Label text="Type" GridPane.rowIndex="5" />
+                <Label text="Contact" GridPane.rowIndex="5" />
+                <Label text="Type" GridPane.rowIndex="4" />
                 <Label text="Start Date and Time" GridPane.rowIndex="6" />
-                <Label text="End Date and Time" GridPane.rowIndex="7" />
-                <Label text="Customer ID" GridPane.rowIndex="8" />
-                <Label text="User ID" GridPane.rowIndex="9" />
+                <Label text="End Date and Time" GridPane.rowIndex="8" />
+                <Label text="Customer ID" GridPane.rowIndex="10" />
+                <Label text="User ID" GridPane.rowIndex="11" />
                 <TextField disable="true" editable="false" GridPane.columnIndex="1" />
                 <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                 <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="6" />
                 <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
                 <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
                 <TextField GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                <TextField GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                <TextField GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="11" />
+            <Label text="Label" GridPane.rowIndex="7" />
+            <Label text="Label" GridPane.rowIndex="9" />
+            <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="9" />
             </children>
         </GridPane>
     </children>

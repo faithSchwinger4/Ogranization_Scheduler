@@ -37,13 +37,35 @@ public class AppointmentQuery {
         return allAppointments;
     }
 
-    public static int insert(int appointmentId, String title, String description, String location, String type,
-                             Timestamp start, Timestamp end, Timestamp createDate, String createdBy, Timestamp ) {
+    public static int insert(String title, String description, String location, String type, Timestamp start,
+                             Timestamp end, Timestamp createDate, String createdBy, Timestamp lastUpdate,
+                             String lastUpdatedBy, int customerId, int userId, int contactId) throws SQLException {
 
-        return ;
+        String sql = "INSERT INTO Appointments (Title, Description, Location, Type, Start, End, Create_Date, " +
+                "Created_By, Last_Updated_By, Customer_ID, User_ID, Contact_ID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        PreparedStatement ps = JDBC.connection.prepareStatement(sql);
+        ps.setString(1, title);
+        ps.setString(2,  description);
+        ps.setString(3, location);
+        ps.setString(4, type);
+        ps.setTimestamp(5, start);
+        ps.setTimestamp(6, end);
+        ps.setTimestamp(7, createDate);
+        ps.setString(8, createdBy);
+        ps.setTimestamp(9, lastUpdate);
+        ps.setString(10, lastUpdatedBy);
+        ps.setInt(11, customerId);
+        ps.setInt(12, userId);
+        ps.setInt(13, contactId);
+
+        int rowsAffected = ps.executeUpdate();
+        return rowsAffected;
     }
 
+    /*
     public static int read() {
+
 
     }
 
@@ -54,4 +76,6 @@ public class AppointmentQuery {
     public static int delete() {
 
     }
+
+     */
 }
