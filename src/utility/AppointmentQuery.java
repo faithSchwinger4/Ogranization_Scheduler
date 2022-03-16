@@ -1,4 +1,4 @@
-package helper;
+package utility;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

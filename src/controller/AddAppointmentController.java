@@ -1,7 +1,6 @@
 package controller;
 
-import helper.AppointmentQuery;
-import helper.ContactQuery;
+import utility.ContactQuery;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,12 +17,7 @@ import model.Contact;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Date;
 import java.sql.SQLException;
-import java.sql.Time;
-import java.sql.Timestamp;
-import java.time.LocalDate;
-import java.util.ConcurrentModificationException;
 import java.util.ResourceBundle;
 
 public class AddAppointmentController implements Initializable {
@@ -37,8 +31,8 @@ public class AddAppointmentController implements Initializable {
     public TextField typeField;
     public TextField customerIdField;
     public TextField userIdField;
-    public TextField endTimeField;
-    public TextField startTimeField;
+    public ComboBox startTimeComboBox;
+    public ComboBox endTimeComboBox;
     public DatePicker endDatePicker;
 
     @Override

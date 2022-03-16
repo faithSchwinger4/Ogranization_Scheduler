@@ -1,9 +1,8 @@
-package helper;
+package utility;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.sql.Time;
 
 public abstract class CustomerQuery {
 
