@@ -62,10 +62,10 @@ public class AppointmentsController implements Initializable {
         title.setCellValueFactory(new PropertyValueFactory<>("title"));
         description.setCellValueFactory(new PropertyValueFactory<>("description"));
         location.setCellValueFactory(new PropertyValueFactory<>("location"));
-        contact.setCellValueFactory(new PropertyValueFactory<>("contact"));
+        contact.setCellValueFactory(new PropertyValueFactory<>("contactName"));
         type.setCellValueFactory(new PropertyValueFactory<>("type"));
-        startDateAndTime.setCellValueFactory(new PropertyValueFactory<>("startDateAndTime")); ;
-        endDateAndTime.setCellValueFactory(new PropertyValueFactory<>("endDateAndTime")); ;
+        startDateAndTime.setCellValueFactory(new PropertyValueFactory<>("start")); ;
+        endDateAndTime.setCellValueFactory(new PropertyValueFactory<>("end")); ;
         customerId.setCellValueFactory(new PropertyValueFactory<>("customerId")); ;
         userId.setCellValueFactory(new PropertyValueFactory<>("userId")); ;
     }

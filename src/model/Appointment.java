@@ -1,6 +1,5 @@
 package model;
 
-import java.sql.Time;
 import java.sql.Timestamp;
 
 public class Appointment {
@@ -18,8 +17,9 @@ public class Appointment {
     private int customerId;
     private int userId;
     private int contactId;
+    private String contactName;
 
-    public Appointment(int appointmentId, String title, String description, String location, String type, Timestamp start, Timestamp end, Timestamp createDate, String createdBy, Timestamp lastUpdate, String lastUpdatedBy, int customerId, int userId, int contactId) {
+    public Appointment(int appointmentId, String title, String description, String location, String type, Timestamp start, Timestamp end, Timestamp createDate, String createdBy, Timestamp lastUpdate, String lastUpdatedBy, int customerId, int userId, int contactId, String contactName) {
         this.appointmentId = appointmentId;
         this.title = title;
         this.description = description;
@@ -34,6 +34,7 @@ public class Appointment {
         this.customerId = customerId;
         this.userId = userId;
         this.contactId = contactId;
+        this.contactName = contactName;
     }
 
     public int getAppointmentId() {
@@ -146,5 +147,13 @@ public class Appointment {
 
     public void setContactId(int contactId) {
         this.contactId = contactId;
+    }
+
+    public String getContactName() {
+        return contactName;
+    }
+
+    public void setContactName(String contactName) {
+        this.contactName = contactName;
     }
 }
