@@ -44,8 +44,8 @@ public class AppointmentQuery {
                              String lastUpdatedBy, int customerId, int userId, int contactId) throws SQLException {
 
         String sql = "INSERT INTO Appointments (Title, Description, Location, Type, Start, End, Create_Date, " +
-                "Created_By, Last_Updated_By, Customer_ID, User_ID, Contact_ID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-                "?, ?, ?)";
+                "Created_By, Last_Update, Last_Updated_By, Customer_ID, User_ID, Contact_ID) VALUES (?, ?, ?, ?, ?, " +
+                "?, ?, ?, ?, ?, ?, ?, ?)";
 
         PreparedStatement ps = JDBC.connection.prepareStatement(sql);
         ps.setString(1, title);

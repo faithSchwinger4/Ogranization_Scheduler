@@ -25,4 +25,6 @@ public class ContactQuery {
         }
         return allContacts;
     }
+
+    // query to read one with matching name
 }

@@ -1,5 +1,6 @@
 package controller;
 
+import utility.AppointmentQuery;
 import utility.ContactQuery;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,10 +15,16 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Contact;
+import utility.TimeConversion;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class AddAppointmentController implements Initializable {
@@ -47,19 +54,38 @@ public class AddAppointmentController implements Initializable {
         for(Contact contact : allContacts) {
             contactField.getItems().add(contact.getContactName());
         }
+
+        ObservableList<LocalTime> localTimes = TimeConversion.createTimeList();
+        for (LocalTime time : localTimes) {
+            startTimeComboBox.getItems().add(time);
+        }
+        for (LocalTime time : localTimes) {
+            endTimeComboBox.getItems().add(time);
+        }
+
     }
 
-    public void onActionSaveButtonPressed(ActionEvent actionEvent) throws IOException {
+    public void onActionSaveButtonPressed(ActionEvent actionEvent) throws IOException, SQLException {
         // initialize insert parameters with textfield values
         String title = titleField.getText();
         String description = descriptionField.getText();
         String location = locationField.getText();
         String type = typeField.getText();
         String contactName = (String) contactField.getValue();
-        //LocalDate startDate = startDatePicker.getValue();
-        //Timestamp startDateTime = ;
+        // need to get contact ID number FROM name, use read function in Contact? FIXME
+        int contactId = 1;
+        LocalDateTime start = TimeConversion.createLocalDateTime(startDatePicker.getValue(), (LocalTime) startTimeComboBox.getValue());
+        LocalDateTime end = TimeConversion.createLocalDateTime(endDatePicker.getValue(), (LocalTime) endTimeComboBox.getValue());
+        LocalDateTime createDate = LocalDateTime.now(); //use for lastupdate/updatedby
+        // String createdBy, using the userId FIXME
+        String createdBy = "Faith";
+        int customerId = Integer.parseInt(customerIdField.getText());
+        int userId = Integer.parseInt(userIdField.getText());
 
-        //AppointmentQuery.insert();
+
+        AppointmentQuery.insert(title, description, location, type, Timestamp.valueOf(start), Timestamp.valueOf(end),
+                Timestamp.valueOf(createDate), createdBy, Timestamp.valueOf(createDate), createdBy, customerId, userId,
+                contactId);
 
 
 
