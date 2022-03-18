@@ -83,15 +83,13 @@ public class AddAppointmentController implements Initializable {
         String location = locationField.getText();
         String type = typeField.getText();
         String contactName = (String) contactField.getValue();
-        // need to get contact ID number FROM name, use read function in Contact? FIXME
-        int contactId = 1;
+        int contactId = ContactQuery.findContactId(contactName);
         LocalDateTime start = TimeConversion.createLocalDateTime(startDatePicker.getValue(), (LocalTime) startTimeComboBox.getValue());
         LocalDateTime end = TimeConversion.createLocalDateTime(endDatePicker.getValue(), (LocalTime) endTimeComboBox.getValue());
-        LocalDateTime createDate = LocalDateTime.now(); //use for lastupdate/updatedby
-        // String createdBy, using the userId FIXME
-        String createdBy = "Faith";
+        LocalDateTime createDate = LocalDateTime.now(); //use for lastUpdate
+        String createdBy = currentUser.getUserName(); //use for lastUpdateBy
         int customerId = Integer.parseInt(customerIdField.getText());
-        int userId = Integer.parseInt(userIdField.getText());
+        int userId = currentUser.getUserId();
 
 
         AppointmentQuery.insert(title, description, location, type, Timestamp.valueOf(start), Timestamp.valueOf(end),
