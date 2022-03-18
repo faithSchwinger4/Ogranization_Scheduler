@@ -13,7 +13,9 @@ public class AppointmentQuery {
 
         ObservableList<Appointment> allAppointments = FXCollections.observableArrayList();
 
-        String sql = "SELECT Appointment_ID, Title, Description, Location, Type, Start, End, Create_Date, Created_By, Last_Update, Last_Updated_By, Customer_ID, User_ID, Appointments.Contact_ID, Contact_Name FROM Appointments INNER JOIN Contacts ON Appointments.Contact_ID = Contacts.Contact_ID";
+        String sql = "SELECT Appointment_ID, Title, Description, Location, Type, Start, End, Create_Date, Created_By, " +
+                "Last_Update, Last_Updated_By, Customer_ID, User_ID, Appointments.Contact_ID, Contact_Name " +
+                "FROM Appointments INNER JOIN Contacts ON Appointments.Contact_ID = Contacts.Contact_ID";
         PreparedStatement ps = JDBC.connection.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         while(rs.next()) {

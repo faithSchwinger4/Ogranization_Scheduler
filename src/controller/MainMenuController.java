@@ -6,10 +6,14 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.User;
 
 import java.io.IOException;
 
 public class MainMenuController {
+
+    private static User currentUser;
+
     public void onActionCustomersButtonPressed(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/Customers.fxml"));
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();

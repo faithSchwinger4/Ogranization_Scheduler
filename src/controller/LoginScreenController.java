@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.User;
 
 import java.io.IOException;
 import java.net.URL;
@@ -16,6 +17,7 @@ import java.util.ResourceBundle;
 
 public class LoginScreenController implements Initializable {
 
+    private static User currentUser;
     public TextField username;
     public TextField password;
     public Label localTimeZoneLabel;
@@ -27,6 +29,7 @@ public class LoginScreenController implements Initializable {
 
     public void onActionLoginButtonPressed(ActionEvent actionEvent) throws IOException {
         // take in username, password
+        String username =
         // check db for validity
         // if valid, next screen
 
