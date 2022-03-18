@@ -14,7 +14,17 @@ public class MainMenuController {
 
     private static User currentUser;
 
+    public static User getCurrentUser() {
+        return currentUser;
+    }
+
+    public static void setCurrentUser(User currentUser) {
+        MainMenuController.currentUser = currentUser;
+    }
+
     public void onActionCustomersButtonPressed(ActionEvent actionEvent) throws IOException {
+        CustomersController.setCurrentUser(currentUser);
+
         Parent root = FXMLLoader.load(getClass().getResource("/view/Customers.fxml"));
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 1000, 500);
@@ -24,6 +34,8 @@ public class MainMenuController {
     }
 
     public void onActionAppointmentsButtonPressed(ActionEvent actionEvent) throws IOException {
+        AppointmentsController.setCurrentUser(currentUser);
+
         Parent root = FXMLLoader.load(getClass().getResource("/view/Appointments.fxml"));
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 1000, 600);

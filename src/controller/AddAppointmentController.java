@@ -1,5 +1,6 @@
 package controller;
 
+import model.User;
 import utility.AppointmentQuery;
 import utility.ContactQuery;
 import javafx.collections.FXCollections;
@@ -41,6 +42,16 @@ public class AddAppointmentController implements Initializable {
     public ComboBox startTimeComboBox;
     public ComboBox endTimeComboBox;
     public DatePicker endDatePicker;
+
+    private static User currentUser;
+
+    public static User getCurrentUser() {
+        return currentUser;
+    }
+
+    public static void setCurrentUser(User currentUser) {
+        AddAppointmentController.currentUser = currentUser;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

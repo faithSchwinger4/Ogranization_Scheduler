@@ -1,5 +1,6 @@
 package controller;
 
+import model.User;
 import utility.AppointmentQuery;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -47,6 +48,15 @@ public class AppointmentsController implements Initializable {
     @FXML
     private TableColumn<Appointment, Integer> userId;
 
+    private static User currentUser;
+
+    public static User getCurrentUser() {
+        return currentUser;}
+
+    public static void setCurrentUser(User currentUser) {
+        AppointmentsController.currentUser = currentUser;}
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // get observable list of all appointments
@@ -79,6 +89,8 @@ public class AppointmentsController implements Initializable {
     }
 
     public void onActionAddAppointment(ActionEvent actionEvent) throws IOException {
+        AddAppointmentController.setCurrentUser(currentUser);
+
         Parent root = FXMLLoader.load(getClass().getResource("/view/AddAppointment.fxml"));
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 400, 550);
@@ -88,6 +100,8 @@ public class AppointmentsController implements Initializable {
     }
 
     public void onActionUpdateAppointment(ActionEvent actionEvent) throws IOException {
+        UpdateCustomerController.setCurrentUser(currentUser);
+
         Parent root = FXMLLoader.load(getClass().getResource("/view/UpdateAppointment.fxml"));
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 400, 550);

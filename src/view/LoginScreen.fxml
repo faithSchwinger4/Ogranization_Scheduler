@@ -7,14 +7,14 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginScreenController">
    <children>
       <Button layoutX="277.0" layoutY="279.0" mnemonicParsing="false" onAction="#onActionLoginButtonPressed" text="Login" />
-      <TextField fx:id="username" layoutX="226.0" layoutY="175.0" />
-      <TextField fx:id="password" layoutX="226.0" layoutY="245.0" />
+      <TextField fx:id="usernameField" layoutX="226.0" layoutY="175.0" />
+      <TextField fx:id="passwordField" layoutX="226.0" layoutY="245.0" />
       <Label layoutX="215.0" layoutY="57.0" text="User Login">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <Label layoutX="226.0" layoutY="216.0" text="Pasword" />
+      <Label layoutX="226.0" layoutY="216.0" text="Password" />
       <Label layoutX="226.0" layoutY="145.0" text="Username" />
       <Label fx:id="localTimeZoneLabel" layoutX="512.0" layoutY="350.0" text="...timezone" />
    </children>

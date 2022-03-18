@@ -6,12 +6,21 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.User;
 
 import java.io.IOException;
 
 public class AddCustomerController {
 
+    private static User currentUser;
 
+    public static User getCurrentUser() {
+        return currentUser;
+    }
+
+    public static void setCurrentUser(User currentUser) {
+        AddCustomerController.currentUser = currentUser;
+    }
 
     public void onActionCancelButtonPressed(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/Customers.fxml"));
