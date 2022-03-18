@@ -2,6 +2,7 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -9,8 +10,10 @@ import javafx.stage.Stage;
 import model.User;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class UpdateAppointmentController {
+public class UpdateAppointmentController implements Initializable {
 
     private static User currentUser;
 
@@ -20,6 +23,11 @@ public class UpdateAppointmentController {
 
     public static void setCurrentUser(User currentUser) {
         UpdateAppointmentController.currentUser = currentUser;
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
     }
 
     public void onActionCancelButtonPressed(ActionEvent actionEvent) throws IOException {
@@ -39,4 +47,5 @@ public class UpdateAppointmentController {
         stage.setScene(scene);
         stage.show();
     }
+
 }
