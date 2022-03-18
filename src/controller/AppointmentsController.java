@@ -100,7 +100,10 @@ public class AppointmentsController implements Initializable {
     }
 
     public void onActionUpdateAppointment(ActionEvent actionEvent) throws IOException {
-        UpdateCustomerController.setCurrentUser(currentUser);
+        Appointment selectedAppointment = appointmentTable.getSelectionModel().getSelectedItem();
+        UpdateAppointmentController.setAppointment(selectedAppointment);
+
+        UpdateAppointmentController.setCurrentUser(currentUser);
 
         Parent root = FXMLLoader.load(getClass().getResource("/view/UpdateAppointment.fxml"));
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();

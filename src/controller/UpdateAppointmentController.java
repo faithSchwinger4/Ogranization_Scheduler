@@ -6,7 +6,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.Appointment;
 import model.User;
 
 import java.io.IOException;
@@ -16,18 +18,12 @@ import java.util.ResourceBundle;
 public class UpdateAppointmentController implements Initializable {
 
     private static User currentUser;
-
-    public static User getCurrentUser() {
-        return currentUser;
-    }
-
-    public static void setCurrentUser(User currentUser) {
-        UpdateAppointmentController.currentUser = currentUser;
-    }
+    private static Appointment appointment;
+    public TextField titleField;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        titleField.setText(appointment.getTitle());
     }
 
     public void onActionCancelButtonPressed(ActionEvent actionEvent) throws IOException {
@@ -48,4 +44,19 @@ public class UpdateAppointmentController implements Initializable {
         stage.show();
     }
 
+    public static User getCurrentUser() {
+        return currentUser;
+    }
+
+    public static void setCurrentUser(User currentUser) {
+        UpdateAppointmentController.currentUser = currentUser;
+    }
+
+    public static Appointment getAppointment() {
+        return appointment;
+    }
+
+    public static void setAppointment(Appointment appointment) {
+        UpdateAppointmentController.appointment = appointment;
+    }
 }

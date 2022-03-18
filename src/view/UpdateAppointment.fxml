@@ -41,13 +41,13 @@
                 <Label text="Start Date and Time" GridPane.rowIndex="6" />
                 <Label text="End Date and Time" GridPane.rowIndex="8" />
                 <Label text="Customer ID" GridPane.rowIndex="10" />
-                <TextField disable="true" editable="false" GridPane.columnIndex="1" />
-                <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                <TextField fx:id="appointmentIdField" disable="true" editable="false" GridPane.columnIndex="1" />
+                <TextField fx:id="titleField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <ComboBox fx:id="contactComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                <DatePicker fx:id="startDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                <TextField fx:id="descriptionField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <TextField fx:id="locationField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <TextField fx:id="typeField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                 <TextField GridPane.columnIndex="1" GridPane.rowIndex="7" />
                 <TextField GridPane.columnIndex="1" GridPane.rowIndex="10" />
             <Label text="Label" GridPane.rowIndex="7" />
