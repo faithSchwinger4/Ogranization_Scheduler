@@ -8,7 +8,7 @@
     <children>
         <Button layoutX="300.0" layoutY="481.0" mnemonicParsing="false" onAction="#onActionCancelButtonPressed" text="Cancel" />
         <Button layoutX="240.0" layoutY="481.0" mnemonicParsing="false" onAction="#onActionSaveButtonPressed" text="Save" />
-        <Label layoutX="43.0" layoutY="49.0" text="Add Appointment">
+        <Label layoutX="43.0" layoutY="49.0" text="Update Appointment">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
