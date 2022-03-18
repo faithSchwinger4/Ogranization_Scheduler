@@ -33,17 +33,16 @@ public class AddAppointmentController implements Initializable {
 
     public TextField titleField;
     public ComboBox contactField;
-    public DatePicker startDatePicker;
     public TextField descriptionField;
     public TextField locationField;
     public TextField typeField;
     public TextField customerIdField;
-    public TextField userIdField;
     public ComboBox startTimeComboBox;
     public ComboBox endTimeComboBox;
-    public DatePicker endDatePicker;
+    public DatePicker datePicker;
 
     private static User currentUser;
+
 
     public static User getCurrentUser() {
         return currentUser;
@@ -84,8 +83,8 @@ public class AddAppointmentController implements Initializable {
         String type = typeField.getText();
         String contactName = (String) contactField.getValue();
         int contactId = ContactQuery.findContactId(contactName);
-        LocalDateTime start = TimeConversion.createLocalDateTime(startDatePicker.getValue(), (LocalTime) startTimeComboBox.getValue());
-        LocalDateTime end = TimeConversion.createLocalDateTime(endDatePicker.getValue(), (LocalTime) endTimeComboBox.getValue());
+        LocalDateTime start = TimeConversion.createLocalDateTime(datePicker.getValue(), (LocalTime) startTimeComboBox.getValue());
+        LocalDateTime end = TimeConversion.createLocalDateTime(datePicker.getValue(), (LocalTime) endTimeComboBox.getValue());
         LocalDateTime createDate = LocalDateTime.now(); //use for lastUpdate
         String createdBy = currentUser.getUserName(); //use for lastUpdateBy
         int customerId = Integer.parseInt(customerIdField.getText());
