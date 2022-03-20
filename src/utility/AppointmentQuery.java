@@ -68,13 +68,34 @@ public class AppointmentQuery {
         return rowsAffected;
     }
 
+    public static int update(int appointmentId, String title, String description, String location, String type, Timestamp start,
+                             Timestamp end, Timestamp lastUpdate, String lastUpdatedBy, int customerId, int userId,
+                             int contactId) throws SQLException {
+
+        String sql  = "UPDATE Appointments SET Title = ?, Description = ?, Location = ?, Type = ?, Start = ?, End = ?," +
+                "Last_Update = ?, Last_Updated_By = ?, Customer_ID = ?, User_ID = ?, Contact_ID = ? WHERE " +
+                "Appointment_ID = ?";
+        PreparedStatement ps = JDBC.connection.prepareStatement(sql);
+        ps.setString(1, title);
+        ps.setString(2,  description);
+        ps.setString(3, location);
+        ps.setString(4, type);
+        ps.setTimestamp(5, start);
+        ps.setTimestamp(6, end);
+        ps.setTimestamp(7, lastUpdate);
+        ps.setString(8, lastUpdatedBy);
+        ps.setInt(9, customerId);
+        ps.setInt(10, userId);
+        ps.setInt(11, contactId);
+        ps.setInt(12, appointmentId);
+
+        int rowsAffected = ps.executeUpdate();
+        return rowsAffected;
+    }
+
     /*
     public static int read() {
 
-
-    }
-
-    public static int update() {
 
     }
 

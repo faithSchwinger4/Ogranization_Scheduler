@@ -62,7 +62,7 @@ public class AddAppointmentController implements Initializable {
         }
 
         for(Contact contact : allContacts) {
-            contactField.getItems().add(contact.getContactName());
+            contactField.getItems().add(contact);
         }
 
         ObservableList<LocalTime> localTimes = TimeConversion.createTimeList();
@@ -81,8 +81,8 @@ public class AddAppointmentController implements Initializable {
         String description = descriptionField.getText();
         String location = locationField.getText();
         String type = typeField.getText();
-        String contactName = (String) contactField.getValue();
-        int contactId = ContactQuery.findContactId(contactName);
+        Contact contact = (Contact) contactField.getValue();
+        int contactId = contact.getContactId();
         LocalDateTime start = TimeConversion.createLocalDateTime(datePicker.getValue(), (LocalTime) startTimeComboBox.getValue());
         LocalDateTime end = TimeConversion.createLocalDateTime(datePicker.getValue(), (LocalTime) endTimeComboBox.getValue());
         LocalDateTime createDate = LocalDateTime.now(); //use for lastUpdate

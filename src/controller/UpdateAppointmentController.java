@@ -15,12 +15,15 @@ import javafx.stage.Stage;
 import model.Appointment;
 import model.Contact;
 import model.User;
+import utility.AppointmentQuery;
 import utility.ContactQuery;
 import utility.TimeConversion;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ResourceBundle;
 
@@ -36,11 +39,12 @@ public class UpdateAppointmentController implements Initializable {
     public TextField locationField;
     public TextField typeField;
     public TextField customerIdField;
-    public ComboBox startTimeComboBox;
-    public ComboBox endTimeComboBox;
+    public ComboBox<LocalTime> startTimeComboBox;
+    public ComboBox<LocalTime> endTimeComboBox;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        appointmentIdField.setText(Integer.toString(appointment.getAppointmentId()));
         titleField.setText(appointment.getTitle());
         descriptionField.setText(appointment.getDescription());
         locationField.setText(appointment.getLocation());
@@ -54,10 +58,14 @@ public class UpdateAppointmentController implements Initializable {
             e.printStackTrace();
         }
         for(Contact contact : allContacts) {
-            contactComboBox.getItems().add(contact.getContactName());
+            contactComboBox.getItems().add(contact);
         }
-        //choose which contact automatically displayed FIXME
-
+        //choose which contact automatically displayed
+        for(Contact contact : allContacts) {
+            if (appointment.getContactId() == contact.getContactId()) {
+                contactComboBox.setValue(contact);
+            }
+        }
 
         datePicker.setValue(appointment.getStart().toLocalDate());
 
@@ -65,11 +73,24 @@ public class UpdateAppointmentController implements Initializable {
         ObservableList<LocalTime> localTimes = TimeConversion.createTimeList();
         for (LocalTime time : localTimes) {
             startTimeComboBox.getItems().add(time);
-        }
-        for (LocalTime time : localTimes) {
             endTimeComboBox.getItems().add(time);
         }
+
         //set the time loaded from the appointment
+        System.out.println(appointment.getStart().toLocalTime().toString());
+        System.out.println(appointment.getEnd().toLocalTime().toString());
+        for (LocalTime time : startTimeComboBox.getItems()) {
+            if (appointment.getStart().toLocalTime() == time) {
+                startTimeComboBox.setValue(time);
+                System.out.println("Start time found");
+            }
+        }
+        for (LocalTime time : endTimeComboBox.getItems()) {
+            if (appointment.getEnd().toLocalTime() == time) {
+                endTimeComboBox.setValue(time);
+                System.out.println("End time found");
+            }
+        }
 
         customerIdField.setText(Integer.toString(appointment.getCustomerId()));
     }
@@ -84,9 +105,23 @@ public class UpdateAppointmentController implements Initializable {
         stage.show();
     }
 
-    public void onActionSaveButtonPressed(ActionEvent actionEvent) throws IOException {
+    public void onActionSaveButtonPressed(ActionEvent actionEvent) throws IOException, SQLException {
+        String title = titleField.getText();
+        String description = descriptionField.getText();
+        String location = locationField.getText();
+        String type = typeField.getText();
+        Contact contact = (Contact) contactComboBox.getValue();
+        int contactId = contact.getContactId();
+        LocalDateTime start = TimeConversion.createLocalDateTime(datePicker.getValue(), (LocalTime) startTimeComboBox.getValue());
+        LocalDateTime end = TimeConversion.createLocalDateTime(datePicker.getValue(), (LocalTime) endTimeComboBox.getValue());
+        LocalDateTime lastUpdate = LocalDateTime.now(); //use for lastUpdate
+        String lastUpdatedBy = currentUser.getUserName(); //use for lastUpdateBy
+        int customerId = Integer.parseInt(customerIdField.getText());
+        int userId = currentUser.getUserId();
+        int appointmentId = appointment.getAppointmentId();
 
-
+        AppointmentQuery.update(appointmentId, title, description, location, type, Timestamp.valueOf(start), Timestamp.valueOf(end),
+                Timestamp.valueOf(lastUpdate), lastUpdatedBy, customerId, contactId, userId);
 
         Parent root = FXMLLoader.load(getClass().getResource("/view/Appointments.fxml"));
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
