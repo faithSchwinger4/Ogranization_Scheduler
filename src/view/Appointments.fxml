@@ -22,7 +22,7 @@
         </TableView>
         <Button layoutX="23.0" layoutY="420.0" mnemonicParsing="false" onAction="#onActionAddAppointment" text="Add" />
         <Button layoutX="840.0" layoutY="420.0" mnemonicParsing="false" onAction="#onActionUpdateAppointment" text="Update" />
-        <Button layoutX="915.0" layoutY="420.0" mnemonicParsing="false" text="Delete" />
+        <Button layoutX="915.0" layoutY="420.0" mnemonicParsing="false" onAction="#onActionDeleteAppointment" text="Delete" />
       <Button layoutX="835.0" layoutY="545.0" mnemonicParsing="false" onAction="#onActionReturnToMainMenuButtonPressed" text="Return to Main Menu" />
       <GridPane layoutX="38.0" layoutY="486.0" prefHeight="82.0" prefWidth="584.0">
         <columnConstraints>

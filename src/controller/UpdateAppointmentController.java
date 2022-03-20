@@ -77,18 +77,14 @@ public class UpdateAppointmentController implements Initializable {
         }
 
         //set the time loaded from the appointment
-        System.out.println(appointment.getStart().toLocalTime().toString());
-        System.out.println(appointment.getEnd().toLocalTime().toString());
         for (LocalTime time : startTimeComboBox.getItems()) {
-            if (appointment.getStart().toLocalTime() == time) {
+            if (time.equals(appointment.getStart().toLocalTime())) {
                 startTimeComboBox.setValue(time);
-                System.out.println("Start time found");
             }
         }
         for (LocalTime time : endTimeComboBox.getItems()) {
-            if (appointment.getEnd().toLocalTime() == time) {
+            if (time.equals(appointment.getEnd().toLocalTime())) {
                 endTimeComboBox.setValue(time);
-                System.out.println("End time found");
             }
         }
 

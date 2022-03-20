@@ -93,15 +93,19 @@ public class AppointmentQuery {
         return rowsAffected;
     }
 
+    public static int delete(int appointmentId) throws SQLException {
+        String sql = "DELETE FROM Appointments WHERE Appointment_ID = ?";
+        PreparedStatement ps = JDBC.connection.prepareStatement(sql);
+        ps.setInt(1, appointmentId);
+
+        int rowsAffected = ps.executeUpdate();
+        return rowsAffected;
+    }
+
     /*
     public static int read() {
 
 
     }
-
-    public static int delete() {
-
-    }
-
      */
 }

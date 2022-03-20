@@ -73,10 +73,10 @@ public class AppointmentsController implements Initializable {
         location.setCellValueFactory(new PropertyValueFactory<>("location"));
         contact.setCellValueFactory(new PropertyValueFactory<>("contactName"));
         type.setCellValueFactory(new PropertyValueFactory<>("type"));
-        startDateAndTime.setCellValueFactory(new PropertyValueFactory<>("start")); ;
-        endDateAndTime.setCellValueFactory(new PropertyValueFactory<>("end")); ;
-        customerId.setCellValueFactory(new PropertyValueFactory<>("customerId")); ;
-        userId.setCellValueFactory(new PropertyValueFactory<>("userId")); ;
+        startDateAndTime.setCellValueFactory(new PropertyValueFactory<>("start"));
+        endDateAndTime.setCellValueFactory(new PropertyValueFactory<>("end"));
+        customerId.setCellValueFactory(new PropertyValueFactory<>("customerId"));
+        userId.setCellValueFactory(new PropertyValueFactory<>("userId"));
     }
 
     public void onActionReturnToMainMenuButtonPressed(ActionEvent actionEvent) throws IOException {
@@ -111,5 +111,30 @@ public class AppointmentsController implements Initializable {
         stage.setTitle("Update Appointment");
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void onActionDeleteAppointment(ActionEvent actionEvent) throws SQLException {
+        Appointment selectedAppointment = appointmentTable.getSelectionModel().getSelectedItem();
+
+        AppointmentQuery.delete(selectedAppointment.getAppointmentId());
+
+        // get observable list of all appointments
+        try {
+            appointmentTable.setItems(AppointmentQuery.getAllAppointments());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        //fill each column
+        appointmentId.setCellValueFactory(new PropertyValueFactory<>("appointmentId"));
+        title.setCellValueFactory(new PropertyValueFactory<>("title"));
+        description.setCellValueFactory(new PropertyValueFactory<>("description"));
+        location.setCellValueFactory(new PropertyValueFactory<>("location"));
+        contact.setCellValueFactory(new PropertyValueFactory<>("contactName"));
+        type.setCellValueFactory(new PropertyValueFactory<>("type"));
+        startDateAndTime.setCellValueFactory(new PropertyValueFactory<>("start"));
+        endDateAndTime.setCellValueFactory(new PropertyValueFactory<>("end"));
+        customerId.setCellValueFactory(new PropertyValueFactory<>("customerId"));
+        userId.setCellValueFactory(new PropertyValueFactory<>("userId"));
     }
 }
