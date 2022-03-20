@@ -36,9 +36,9 @@
         </rowConstraints>
          <children>
             <Label text="Appointment Type" />
-            <ComboBox prefWidth="150.0" GridPane.rowIndex="1" />
+            <ComboBox fx:id="appointmentTypeComboBox" onAction="#onActionAppointmentTypeSelected" prefWidth="150.0" GridPane.rowIndex="1" />
             <Label text="Month" GridPane.columnIndex="1" />
-            <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ComboBox fx:id="selectedMonthComboBox" onAction="#onActionMonthSelected" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="Total Appointments" GridPane.columnIndex="2" />
             <Label fx:id="totalAppointmentCount" prefHeight="17.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
          </children>
