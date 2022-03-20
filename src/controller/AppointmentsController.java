@@ -1,5 +1,7 @@
 package controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import model.User;
 import utility.AppointmentQuery;
 import javafx.event.ActionEvent;
@@ -20,6 +22,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ResourceBundle;
 
 public class AppointmentsController implements Initializable {
@@ -124,17 +129,56 @@ public class AppointmentsController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
 
-        //fill each column
-        appointmentId.setCellValueFactory(new PropertyValueFactory<>("appointmentId"));
-        title.setCellValueFactory(new PropertyValueFactory<>("title"));
-        description.setCellValueFactory(new PropertyValueFactory<>("description"));
-        location.setCellValueFactory(new PropertyValueFactory<>("location"));
-        contact.setCellValueFactory(new PropertyValueFactory<>("contactName"));
-        type.setCellValueFactory(new PropertyValueFactory<>("type"));
-        startDateAndTime.setCellValueFactory(new PropertyValueFactory<>("start"));
-        endDateAndTime.setCellValueFactory(new PropertyValueFactory<>("end"));
-        customerId.setCellValueFactory(new PropertyValueFactory<>("customerId"));
-        userId.setCellValueFactory(new PropertyValueFactory<>("userId"));
+    public void onActionDisplayAllAppointments(ActionEvent actionEvent) {
+        // get observable list of all appointments
+        try {
+            appointmentTable.setItems(AppointmentQuery.getAllAppointments());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void onActionDisplayAppointmentsThisMonth(ActionEvent actionEvent) throws SQLException {
+        // get observable list of appts this month
+        ObservableList<Appointment> allAppointments = AppointmentQuery.getAllAppointments();
+        ObservableList<Appointment> appointmentsThisMonth = FXCollections.observableArrayList();
+        Month currentMonth = LocalDate.now().getMonth();
+
+        for (Appointment appointment : allAppointments) {
+            if (appointment.getStart().toLocalDate().getMonth().equals(currentMonth)) {
+                appointmentsThisMonth.add(appointment);
+            }
+        }
+
+        appointmentTable.setItems(appointmentsThisMonth);
+    }
+
+    public void onActionDisplayAppointmentsThisWeek(ActionEvent actionEvent) throws SQLException {
+        // get observable list of appts this week
+        ObservableList<Appointment> allAppointments = AppointmentQuery.getAllAppointments();
+        ObservableList<Appointment> appointmentsThisWeek = FXCollections.observableArrayList();
+
+        LocalDate currentDate = LocalDate.now();
+        int currentWeekday = currentDate.getDayOfWeek().getValue();
+        LocalDate firstDayOfWeek = currentDate.minusDays(1); //moves by 1 day because we don't have a <= for localdate values, only .isBefore or .isAfter
+        LocalDate lastDayOfWeek = currentDate.plusDays(1);
+
+        for (int i = 0, j = 6; i < 7; i++, j--) {
+            if ((currentWeekday % 7) == i) {
+                firstDayOfWeek = currentDate.minusDays(i);
+                lastDayOfWeek = currentDate.plusDays(j);
+            }
+        }
+
+        for(Appointment appointment : allAppointments) {
+            if (firstDayOfWeek.isBefore(appointment.getStart().toLocalDate())
+                    && appointment.getStart().toLocalDate().isBefore(lastDayOfWeek)) {
+                appointmentsThisWeek.add(appointment);
+            }
+        }
+
+        appointmentTable.setItems(appointmentsThisWeek);
     }
 }

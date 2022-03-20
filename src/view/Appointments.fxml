@@ -59,9 +59,12 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <RadioButton mnemonicParsing="false" selected="true" text="All Time" GridPane.columnIndex="1" />
-            <RadioButton mnemonicParsing="false" text="This Month" GridPane.columnIndex="2" />
-            <RadioButton mnemonicParsing="false" text="This Week" GridPane.columnIndex="3" />
+            <RadioButton mnemonicParsing="false" onAction="#onActionDisplayAllAppointments" selected="true" text="All Time" GridPane.columnIndex="1">
+               <toggleGroup>
+                  <ToggleGroup fx:id="tableDisplayChoice" />
+               </toggleGroup></RadioButton>
+            <RadioButton mnemonicParsing="false" onAction="#onActionDisplayAppointmentsThisMonth" text="This Month" toggleGroup="$tableDisplayChoice" GridPane.columnIndex="2" />
+            <RadioButton mnemonicParsing="false" onAction="#onActionDisplayAppointmentsThisWeek" text="This Week" toggleGroup="$tableDisplayChoice" GridPane.columnIndex="3" />
          </children>
       </GridPane>
     </children>
