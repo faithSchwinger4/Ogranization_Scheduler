@@ -6,15 +6,15 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomersController">
    <children>
-      <TableView layoutX="29.0" layoutY="77.0" prefHeight="313.0" prefWidth="946.0">
+      <TableView fx:id="customersTable" layoutX="29.0" layoutY="77.0" prefHeight="313.0" prefWidth="946.0">
         <columns>
-          <TableColumn prefWidth="96.0" text="Customer ID" />
-          <TableColumn prefWidth="138.0" text="Name" />
-            <TableColumn prefWidth="253.0" text="Address" />
-            <TableColumn prefWidth="92.0" text="Country" />
-            <TableColumn prefWidth="131.0" text="Division" />
-            <TableColumn prefWidth="98.0" text="Postal Code" />
-            <TableColumn prefWidth="137.0" text="Phone Number" />
+          <TableColumn fx:id="customerIdColumn" prefWidth="96.0" text="Customer ID" />
+          <TableColumn fx:id="nameColumn" prefWidth="138.0" text="Name" />
+            <TableColumn fx:id="addressColumn" prefWidth="253.0" text="Address" />
+            <TableColumn fx:id="countryColumn" prefWidth="92.0" text="Country" />
+            <TableColumn fx:id="divisionColumn" prefWidth="131.0" text="Division" />
+            <TableColumn fx:id="postalCodeColumn" prefWidth="98.0" text="Postal Code" />
+            <TableColumn fx:id="phoneNumberColumn" prefWidth="137.0" text="Phone Number" />
         </columns>
       </TableView>
       <Button layoutX="29.0" layoutY="405.0" mnemonicParsing="false" onAction="#onActionAddCustomerButtonPressed" text="Add" />
