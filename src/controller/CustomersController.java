@@ -1,5 +1,7 @@
 package controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,13 +11,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Appointment;
 import model.Customer;
 import model.User;
+import utility.CustomerQuery;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class CustomersController implements Initializable {
@@ -25,6 +30,18 @@ public class CustomersController implements Initializable {
     private TableView<Customer> customersTable;
     @FXML
     private TableColumn<Customer, Integer> customerIdColumn;
+    @FXML
+    private TableColumn<Customer, String> nameColumn;
+    @FXML
+    private TableColumn<Customer, String> addressColumn;
+    @FXML
+    private TableColumn<Customer, String> countryColumn;
+    @FXML
+    private TableColumn<Customer, String> divisionColumn;
+    @FXML
+    private TableColumn<Customer, String> postalCodeColumn;
+    @FXML
+    private TableColumn<Customer, String> phoneNumberColumn;
 
     public static User getCurrentUser() {
         return currentUser;}
@@ -33,7 +50,23 @@ public class CustomersController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        ObservableList<Customer> allCustomers = FXCollections.observableArrayList();
 
+        try {
+            allCustomers = CustomerQuery.getAllCustomers();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        customersTable.setItems(allCustomers);
+
+        customerIdColumn.setCellValueFactory(new PropertyValueFactory<>("customerId"));
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("customerName"));
+        addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
+        countryColumn.setCellValueFactory(new PropertyValueFactory<>(""));
+        divisionColumn.setCellValueFactory(new PropertyValueFactory<>(""));
+        postalCodeColumn.setCellValueFactory(new PropertyValueFactory<>("postalCode"));
+        phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
     }
 
 
