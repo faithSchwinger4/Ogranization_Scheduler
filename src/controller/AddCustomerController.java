@@ -1,18 +1,37 @@
 package controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.Country;
+import model.Customer;
+import model.FirstLevelDivision;
 import model.User;
+import utility.CountryQuery;
 
 import java.io.IOException;
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class AddCustomerController {
+public class AddCustomerController implements Initializable {
 
     private static User currentUser;
+    public TextField customerIdField;
+    public TextField customerNameField;
+    public TextField customerAddressField;
+    public ComboBox<Country> customerCountryComboBox;
+    public ComboBox<FirstLevelDivision> customerDivisionField;
+    public TextField customerPostalCodeField;
+    public TextField customerPhoneNumberField;
 
     public static User getCurrentUser() {
         return currentUser;
@@ -20,6 +39,20 @@ public class AddCustomerController {
 
     public static void setCurrentUser(User currentUser) {
         AddCustomerController.currentUser = currentUser;
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        ObservableList<Country> allCountries = FXCollections.observableArrayList();
+        try {
+            allCountries = CountryQuery.getAllCountries();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        for (Country country : allCountries) {
+            customerCountryComboBox.getItems().add(country);
+        }
     }
 
     public void onActionCancelButtonPressed(ActionEvent actionEvent) throws IOException {
