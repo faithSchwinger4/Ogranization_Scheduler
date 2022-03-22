@@ -63,8 +63,8 @@ public class CustomersController implements Initializable {
         customerIdColumn.setCellValueFactory(new PropertyValueFactory<>("customerId"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("customerName"));
         addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
-        countryColumn.setCellValueFactory(new PropertyValueFactory<>(""));
-        divisionColumn.setCellValueFactory(new PropertyValueFactory<>(""));
+        countryColumn.setCellValueFactory(new PropertyValueFactory<>("countryName"));
+        divisionColumn.setCellValueFactory(new PropertyValueFactory<>("divisionName"));
         postalCodeColumn.setCellValueFactory(new PropertyValueFactory<>("postalCode"));
         phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
     }
