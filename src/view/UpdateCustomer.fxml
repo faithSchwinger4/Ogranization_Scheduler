@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.scene.text.Font?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controller.UpdateCustomerController"
-            prefHeight="550.0" prefWidth="400.0">
+<AnchorPane prefHeight="550.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UpdateCustomerController">
     <children>
         <Button layoutX="300.0" layoutY="481.0" mnemonicParsing="false" onAction="#onActionCancelButtonPressed" text="Cancel" />
         <Button layoutX="232.0" layoutY="481.0" mnemonicParsing="false" onAction="#onActionSaveButtonPressed" text="Save" />
@@ -44,8 +38,8 @@
                 <TextField fx:id="customerIdField" disable="true" editable="false" GridPane.columnIndex="1" />
                 <TextField fx:id="customerNameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 <TextField fx:id="customerAddressField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                <ComboBox fx:id="customerCountryComboBox" prefHeight="25.0" prefWidth="189.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                <ComboBox fx:id="customerDivisionField" prefHeight="25.0" prefWidth="193.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                <ComboBox fx:id="customerCountryComboBox" onAction="#onActionCountrySelected" prefHeight="25.0" prefWidth="189.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <ComboBox fx:id="customerDivisionComboBox" prefHeight="25.0" prefWidth="193.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                 <TextField fx:id="customerPostalCodeField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                 <TextField fx:id="customerPhoneNumberField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             </children>

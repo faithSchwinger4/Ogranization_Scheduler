@@ -92,6 +92,7 @@ public class CustomersController implements Initializable {
 
     public void onActionUpdateCustomerButtonPressed(ActionEvent actionEvent) throws IOException {
         UpdateCustomerController.setCurrentUser(currentUser);
+        UpdateCustomerController.setCustomerToUpdate(customersTable.getSelectionModel().getSelectedItem());
 
         Parent root = FXMLLoader.load(getClass().getResource("/view/UpdateCustomer.fxml"));
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();

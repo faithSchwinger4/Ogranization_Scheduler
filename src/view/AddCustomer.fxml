@@ -38,8 +38,8 @@
             <TextField fx:id="customerIdField" disable="true" editable="false" GridPane.columnIndex="1" />
             <TextField fx:id="customerNameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="customerAddressField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <ComboBox fx:id="customerCountryComboBox" prefHeight="25.0" prefWidth="189.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <ComboBox fx:id="customerDivisionField" prefHeight="25.0" prefWidth="193.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <ComboBox fx:id="customerCountryComboBox" onAction="#onActionCountrySelected" prefHeight="25.0" prefWidth="189.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ComboBox fx:id="customerDivisionComboBox" prefHeight="25.0" prefWidth="193.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <TextField fx:id="customerPostalCodeField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <TextField fx:id="customerPhoneNumberField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
          </children>

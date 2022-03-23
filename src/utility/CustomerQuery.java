@@ -4,10 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Customer;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.sql.*;
 import java.time.LocalDateTime;
 
 public abstract class CustomerQuery {
@@ -65,6 +62,25 @@ public abstract class CustomerQuery {
         ps.setTimestamp(7, lastUpdate);
         ps.setString(8, lastUpdatedBy);
         ps.setInt(9, divisionId);
+
+        int rowsAffected = ps.executeUpdate();
+        return rowsAffected;
+    }
+
+    public static int update(int customerId, String customerName, String address, String postalCode, String phoneNumber,
+                             Timestamp lastUpdate, String lastUpdatedBy, int divisionId) throws SQLException {
+
+        String sql = "UPDATE Customers SET Customer_Name = ?, Address = ?,  Postal_Code = ?, Phone = ?, Last_Update = ?," +
+                " Last_Updated_By = ?, Division_ID = ? WHERE Customer_ID = ?";
+        PreparedStatement ps = JDBC.connection.prepareStatement(sql);
+        ps.setString(1, customerName);
+        ps.setString(2, address);
+        ps.setString(3, postalCode);
+        ps.setString(4, phoneNumber);
+        ps.setTimestamp(5, lastUpdate);
+        ps.setString(6, lastUpdatedBy);
+        ps.setInt(7, divisionId);
+        ps.setInt(8, customerId);
 
         int rowsAffected = ps.executeUpdate();
         return rowsAffected;

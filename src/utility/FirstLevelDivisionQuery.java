@@ -14,9 +14,10 @@ public class FirstLevelDivisionQuery {
     public static ObservableList<FirstLevelDivision> getDivisionsInOneCountry(int countryId) throws SQLException {
         ObservableList<FirstLevelDivision> divisions = FXCollections.observableArrayList();
 
-        String sql = "SELECT Division_ID, Division, Create_Date, Created_By, Last_Update, Last_Updated_By, Country_ID" +
-                "FROM First_Level_Divisions WHERE Country_ID = ?";
+        String sql = "SELECT * FROM first_level_divisions WHERE Country_ID = ?";
         PreparedStatement ps = JDBC.connection.prepareStatement(sql);
+        ps.setInt(1, countryId);
+
         ResultSet rs = ps.executeQuery();
         while(rs.next()) {
             int divisionId = rs.getInt("Division_ID");

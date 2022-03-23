@@ -5,10 +5,7 @@ import javafx.collections.ObservableList;
 import model.Country;
 
 import java.lang.module.ResolutionException;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.sql.*;
 import java.time.LocalDateTime;
 
 public class CountryQuery {
@@ -35,4 +32,19 @@ public class CountryQuery {
         return allCountries;
     }
 
+    public static Country getCountryFromID(int countryId) throws SQLException {
+        String sql = "SELECT * FROM Countries WHERE Country_ID = ?";
+        PreparedStatement ps = JDBC.connection.prepareStatement(sql);
+        ps.setInt(1, countryId);
+        ResultSet rs = ps.executeQuery();
+
+        rs.next();
+        String countryName = rs.getString("Country");
+        Timestamp createDate = rs.getTimestamp("Create_Date");
+        String createdBy = rs.getString("Created_By");
+        LocalDateTime lastUpdate = rs.getTimestamp("Last_Update").toLocalDateTime();
+        String lastUpdatedBy = rs.getString("Last_Updated_By");
+
+        return new Country(countryId, countryName, createDate, createdBy, lastUpdate, lastUpdatedBy);
+    }
 }
