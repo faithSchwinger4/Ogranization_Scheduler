@@ -29,9 +29,6 @@ import java.time.Month;
 import java.util.ResourceBundle;
 
 public class AppointmentsController implements Initializable {
-    public Label totalAppointmentCount; //where the count of appointments by type and month is output
-    public ComboBox<String> appointmentTypeComboBox;
-    public ComboBox<Month> selectedMonthComboBox;
 
     @FXML
     private TableView<Appointment> appointmentTable;
@@ -88,23 +85,6 @@ public class AppointmentsController implements Initializable {
         endDateAndTime.setCellValueFactory(new PropertyValueFactory<>("end"));
         customerId.setCellValueFactory(new PropertyValueFactory<>("customerId"));
         userId.setCellValueFactory(new PropertyValueFactory<>("userId"));
-
-        for(Month month : Month.values()) {
-            selectedMonthComboBox.getItems().add(month);
-        }
-
-        ObservableList<String> allTypes = FXCollections.observableArrayList();
-
-        for (Appointment appointment : allAppointments) {
-            String currentType = appointment.getType();
-            if ( !(allTypes.contains(currentType)) ) {
-                allTypes.add(currentType);
-            }
-        }
-
-        for(String type : allTypes) {
-            appointmentTypeComboBox.getItems().add(type);
-        }
     }
 
     public void onActionReturnToMainMenuButtonPressed(ActionEvent actionEvent) throws IOException {
@@ -203,45 +183,5 @@ public class AppointmentsController implements Initializable {
         }
 
         appointmentTable.setItems(appointmentsThisWeek);
-    }
-
-    public void onActionAppointmentTypeSelected(ActionEvent actionEvent) throws SQLException {
-        ObservableList<Appointment> allAppointments = AppointmentQuery.getAllAppointments();
-        int i = 0; // counter
-
-        if (appointmentTypeComboBox.getSelectionModel().isEmpty() || selectedMonthComboBox.getSelectionModel().isEmpty()) {
-            totalAppointmentCount.setText(""); //blank because we don't have information to calculate the total yet
-            System.out.println("Not enough info yet");
-        }
-        else {
-            Month selectedMonth = selectedMonthComboBox.getValue();
-            String appointmentType = appointmentTypeComboBox.getValue();
-            for (Appointment appointment : allAppointments) {
-                if (appointment.getStart().getMonth() == selectedMonth && appointment.getType().equals(appointmentType)) {
-                    i++;
-                }
-            }
-            totalAppointmentCount.setText(Integer.toString(i));
-        }
-    }
-
-    public void onActionMonthSelected(ActionEvent actionEvent) throws SQLException {
-        ObservableList<Appointment> allAppointments = AppointmentQuery.getAllAppointments();
-        int i = 0; // counter
-
-        if (appointmentTypeComboBox.getSelectionModel().isEmpty() || selectedMonthComboBox.getSelectionModel().isEmpty()) {
-            totalAppointmentCount.setText(""); //blank because we don't have information to calculate the total yet
-            System.out.println("Not enough info yet");
-        }
-        else {
-            Month selectedMonth = selectedMonthComboBox.getValue();
-            String appointmentType = appointmentTypeComboBox.getValue();
-            for (Appointment appointment : allAppointments) {
-                if (appointment.getStart().getMonth() == selectedMonth && appointment.getType().equals(appointmentType)) {
-                    i++;
-                }
-            }
-            totalAppointmentCount.setText(Integer.toString(i));
-        }
     }
 }
