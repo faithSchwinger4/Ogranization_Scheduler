@@ -85,7 +85,12 @@ public class UpdateCustomerController implements Initializable {
         }
 
         // get the current division object to initialize the combobox
-        FirstLevelDivisionQuery customerDivision = ; //need query retrieve single division
+        FirstLevelDivision customerDivision = null; //need query retrieve single division
+        try {
+            customerDivision = FirstLevelDivisionQuery.getDivisionFromId(customerToUpdate.getDivisionId());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         customerDivisionComboBox.setValue(customerDivision);
     }
 

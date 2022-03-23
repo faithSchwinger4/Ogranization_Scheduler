@@ -45,4 +45,22 @@ public class FirstLevelDivisionQuery {
 
         return rs.getInt("Country_ID");
     }
+
+    public static FirstLevelDivision getDivisionFromId(int divisionId) throws SQLException {
+        String sql = "SELECT * FROM First_Level_Divisions WHERE Division_ID = ?";
+        PreparedStatement ps = JDBC.connection.prepareStatement(sql);
+        ps.setInt(1, divisionId);
+        ResultSet rs = ps.executeQuery();
+
+        rs.next();
+        String divisionName = rs.getString("Division");
+        LocalDateTime createDate = rs.getTimestamp("Create_Date").toLocalDateTime();
+        String createdBy = rs.getString("Created_By");
+        LocalDateTime lastUpdate = rs.getTimestamp("Last_Update").toLocalDateTime();
+        String lastUpdatedBy = rs.getString("Last_Updated_By");
+        int countryId = rs.getInt("Country_ID");
+
+        return new FirstLevelDivision(divisionId, divisionName, createDate, createdBy, lastUpdate,lastUpdatedBy,
+                countryId);
+    }
 }
