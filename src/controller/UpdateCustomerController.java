@@ -22,6 +22,8 @@ import utility.FirstLevelDivisionQuery;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 
 public class UpdateCustomerController implements Initializable {
@@ -66,7 +68,7 @@ public class UpdateCustomerController implements Initializable {
 
         Country customerCountry = null; // get country object to initialize combobox
         try {
-            customerCountry = CountryQuery.getCountryFromID(customerToUpdate.getCustomerId());
+            customerCountry = CountryQuery.getCountryFromID(customerToUpdate.getCountryId());
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -103,7 +105,19 @@ public class UpdateCustomerController implements Initializable {
         stage.show();
     }
 
-    public void onActionSaveButtonPressed(ActionEvent actionEvent) throws IOException {
+    public void onActionSaveButtonPressed(ActionEvent actionEvent) throws IOException, SQLException {
+        int customerId = customerToUpdate.getCustomerId();
+        String customerName = customerNameField.getText();
+        String address = customerAddressField.getText();
+        String postalCode = customerPostalCodeField.getText();
+        String phoneNumber = customerPhoneNumberField.getText();
+        LocalDateTime lastUpdate = LocalDateTime.now();
+        String lastUpdatedBy = currentUser.getUserName();
+        int divisionId = customerDivisionComboBox.getValue().getDivisionId();
+
+        CustomerQuery.update(customerId, customerName, address, postalCode, phoneNumber, Timestamp.valueOf(lastUpdate),
+                lastUpdatedBy, divisionId);
+
         Parent root = FXMLLoader.load(getClass().getResource("/view/Customers.fxml"));
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 1000, 500);
