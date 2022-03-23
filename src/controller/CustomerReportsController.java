@@ -3,12 +3,18 @@ package controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 import model.Appointment;
 import utility.AppointmentQuery;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.Month;
@@ -19,6 +25,8 @@ public class CustomerReportsController implements Initializable {
     public ComboBox<String> appointmentTypeComboBox;
     public ComboBox<Month> selectedMonthComboBox;
     public Label totalAppointmentCount; // where the count of appointments is output
+    public ComboBox<Month> percentageMonthComboBox;
+    public Label percentageOfCustomers;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -31,6 +39,7 @@ public class CustomerReportsController implements Initializable {
 
         for(Month month : Month.values()) {
             selectedMonthComboBox.getItems().add(month);
+            percentageMonthComboBox.getItems().add(month);
         }
 
         ObservableList<String> allTypes = FXCollections.observableArrayList();
@@ -85,5 +94,17 @@ public class CustomerReportsController implements Initializable {
             }
             totalAppointmentCount.setText(Integer.toString(i));
         }
+    }
+
+    public void onActionReturnToMainMenu(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/view/MainMenu.fxml"));
+        Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 400, 500);
+        stage.setTitle("Main Menu");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void onActionPercentageMonthChosen(ActionEvent actionEvent) {
     }
 }
