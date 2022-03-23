@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import model.Appointment;
 import model.Customer;
 import model.User;
+import utility.AppointmentQuery;
 import utility.CustomerQuery;
 
 import java.io.IOException;
@@ -100,5 +101,25 @@ public class CustomersController implements Initializable {
         stage.setTitle("Update Customer");
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void onActionDeleteCustomer(ActionEvent actionEvent) throws SQLException {
+        int customerIdToDelete = customersTable.getSelectionModel().getSelectedItem().getCustomerId();
+
+        // find the customer's appointments, place in an OL
+        ObservableList<Appointment> customerAppointments = FXCollections.observableArrayList();
+        customerAppointments = AppointmentQuery.getCustomerAppointments(customerIdToDelete);
+
+        // delete using for loop and appt query
+        for (Appointment appointment : customerAppointments) {
+            AppointmentQuery.delete(appointment.getAppointmentId());
+            System.out.println("deleting appointments");
+        }
+
+        // delete the customer from db
+        CustomerQuery.delete(customerIdToDelete);
+
+        ObservableList<Customer> currentCustomers = CustomerQuery.getAllCustomers();
+        customersTable.setItems(currentCustomers);
     }
 }

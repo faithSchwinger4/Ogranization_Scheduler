@@ -52,4 +52,13 @@ public class MainMenuController {
         stage.setScene(scene);
         stage.show();
     }
+
+    public void onCustomerReportsButtonPressed(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/view/CustomerReports.fxml"));
+        Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 600, 400);
+        stage.setTitle("Schedules");
+        stage.setScene(scene);
+        stage.show();
+    }
 }

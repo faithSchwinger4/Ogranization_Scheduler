@@ -85,4 +85,13 @@ public abstract class CustomerQuery {
         int rowsAffected = ps.executeUpdate();
         return rowsAffected;
     }
+
+    public static int delete(int customerId) throws SQLException {
+        String sql = "DELETE FROM Customers WHERE Customer_ID = ?";
+        PreparedStatement ps = JDBC.connection.prepareStatement(sql);
+        ps.setInt(1, customerId);
+
+        int rowsAffected = ps.executeUpdate();
+        return rowsAffected;
+    }
 }

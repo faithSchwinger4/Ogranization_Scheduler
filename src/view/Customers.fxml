@@ -19,7 +19,7 @@
       </TableView>
       <Button layoutX="29.0" layoutY="405.0" mnemonicParsing="false" onAction="#onActionAddCustomerButtonPressed" text="Add" />
       <Button layoutX="850.0" layoutY="405.0" mnemonicParsing="false" onAction="#onActionUpdateCustomerButtonPressed" text="Update" />
-      <Button layoutX="920.0" layoutY="405.0" mnemonicParsing="false" text="Delete" />
+      <Button layoutX="920.0" layoutY="405.0" mnemonicParsing="false" onAction="#onActionDeleteCustomer" text="Delete" />
        <Button layoutX="840.0" layoutY="455.0" mnemonicParsing="false" onAction="#onActionReturnToMainMenuButtonPressed" text="Return to Main Menu" />
       <Label layoutX="34.0" layoutY="36.0" text="Customers">
          <font>
