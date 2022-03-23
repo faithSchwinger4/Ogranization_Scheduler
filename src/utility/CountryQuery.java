@@ -29,6 +29,7 @@ public class CountryQuery {
             String lastUpdatedBy = rs.getString("Last_Updated_By");
 
             Country nextCountry = new Country(countryId, countryName, createDate, createdBy, lastUpdate, lastUpdatedBy);
+            allCountries.add(nextCountry);
         }
 
         return allCountries;

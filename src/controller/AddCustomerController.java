@@ -43,15 +43,18 @@ public class AddCustomerController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        System.out.println("Attempted to initialize");
         ObservableList<Country> allCountries = FXCollections.observableArrayList();
         try {
             allCountries = CountryQuery.getAllCountries();
         } catch (SQLException e) {
             e.printStackTrace();
+            System.out.println("Failed to get the countries");
         }
 
         for (Country country : allCountries) {
             customerCountryComboBox.getItems().add(country);
+            System.out.println("for each country");
         }
     }
 
