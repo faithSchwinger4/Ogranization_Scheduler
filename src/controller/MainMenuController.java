@@ -56,7 +56,7 @@ public class MainMenuController {
     public void onCustomerReportsButtonPressed(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/CustomerReports.fxml"));
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 600, 400);
+        Scene scene = new Scene(root, 650, 500);
         stage.setTitle("Schedules");
         stage.setScene(scene);
         stage.show();
