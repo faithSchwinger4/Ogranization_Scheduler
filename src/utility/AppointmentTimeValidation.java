@@ -5,6 +5,7 @@ import model.Appointment;
 
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 public class AppointmentTimeValidation {
 
@@ -30,7 +31,9 @@ public class AppointmentTimeValidation {
 
     public static boolean duringBusinessHours(LocalDateTime start, LocalDateTime end) {
         // check the time zone against EST
-        // get the computers current time zone?
+        // get the computers current time zone?\
+        ZoneId currentZoneId = ZoneId.systemDefault();
+
         //if () {}
 
         return true;

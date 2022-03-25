@@ -1,5 +1,6 @@
 package main;
 
+import utility.AppointmentTimeValidation;
 import utility.JDBC;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
