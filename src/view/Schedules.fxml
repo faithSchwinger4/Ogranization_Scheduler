@@ -7,18 +7,18 @@
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SchedulesController">
    <children>
       <Button layoutX="626.0" layoutY="547.0" mnemonicParsing="false" onAction="#onActionReturnToMainMenuButtonPressed" prefHeight="25.0" prefWidth="145.0" text="Return to Main Menu" />
-      <ComboBox layoutX="39.0" layoutY="119.0" prefWidth="150.0" />
+      <ComboBox fx:id="contactComboBox" layoutX="39.0" layoutY="119.0" onAction="#onActionContactChosen" prefWidth="150.0" />
       <Label layoutX="40.0" layoutY="88.0" text="Contact:" />
       <Label layoutX="40.0" layoutY="175.0" text="Schedule:" />
-      <TableView layoutX="39.0" layoutY="207.0" prefHeight="321.0" prefWidth="720.0">
+      <TableView fx:id="appointmentTable" layoutX="39.0" layoutY="207.0" prefHeight="321.0" prefWidth="720.0">
         <columns>
-          <TableColumn prefWidth="105.0" text="Appointment ID" />
-          <TableColumn prefWidth="72.0" text="Title" />
-            <TableColumn prefWidth="100.0" text="Type" />
-            <TableColumn prefWidth="119.0" text="Description" />
-            <TableColumn prefWidth="129.0" text="Start Date and Time" />
-            <TableColumn prefWidth="120.0" text="End Date and Time" />
-            <TableColumn prefWidth="74.0" text="Cutomer ID" />
+          <TableColumn fx:id="appointmentIdColumn" prefWidth="105.0" text="Appointment ID" />
+          <TableColumn fx:id="titleColumn" prefWidth="72.0" text="Title" />
+            <TableColumn fx:id="typeColumn" prefWidth="100.0" text="Type" />
+            <TableColumn fx:id="descriptionColumn" prefWidth="119.0" text="Description" />
+            <TableColumn fx:id="startColumn" prefWidth="129.0" text="Start Date and Time" />
+            <TableColumn fx:id="endColumn" prefWidth="120.0" text="End Date and Time" />
+            <TableColumn fx:id="customerIdColumn" prefWidth="74.0" text="Cutomer ID" />
         </columns>
       </TableView>
       <Label layoutX="39.0" layoutY="38.0" text="Choose a contact to view their schedule:">
