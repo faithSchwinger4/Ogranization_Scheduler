@@ -12,7 +12,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import model.Appointment;
+import model.Customer;
 import utility.AppointmentQuery;
+import utility.CustomerQuery;
 
 import java.io.IOException;
 import java.net.URL;
@@ -96,6 +98,28 @@ public class CustomerReportsController implements Initializable {
         }
     }
 
+    public void onActionPercentageMonthChosen(ActionEvent actionEvent) throws SQLException {
+        ObservableList<Appointment> allAppointments = AppointmentQuery.getAllAppointments();
+        ObservableList<Customer> allCustomers = CustomerQuery.getAllCustomers();
+        double totalCustomers = (double) allCustomers.size();
+        int i = 0; // counter
+
+        Month selectedMonth = percentageMonthComboBox.getValue();
+        for (Appointment appointment : allAppointments) {
+            for (Customer customer : allCustomers) {
+                if (appointment.getStart().getMonth() == selectedMonth
+                        && appointment.getCustomerId() == customer.getCustomerId()) {
+                    i++;
+                    allCustomers.remove(customer);
+                    break;
+                }
+            }
+        }
+
+        double percentage = ((double) i / totalCustomers) * 100;
+        percentageOfCustomers.setText(String.format("%.2f", percentage) + "%");
+    }
+
     public void onActionReturnToMainMenu(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/MainMenu.fxml"));
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
@@ -103,8 +127,5 @@ public class CustomerReportsController implements Initializable {
         stage.setTitle("Main Menu");
         stage.setScene(scene);
         stage.show();
-    }
-
-    public void onActionPercentageMonthChosen(ActionEvent actionEvent) {
     }
 }

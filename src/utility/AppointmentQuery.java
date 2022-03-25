@@ -136,11 +136,4 @@ public class AppointmentQuery {
         int rowsAffected = ps.executeUpdate();
         return rowsAffected;
     }
-
-    /*
-    public static int read() {
-
-
-    }
-     */
 }

@@ -2,10 +2,14 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomerReportsController">
+<AnchorPane prefHeight="500.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomerReportsController">
    <children>
-      <GridPane layoutX="34.0" layoutY="117.0" prefHeight="60.0" prefWidth="545.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="159.0" layoutX="41.0" layoutY="283.0" stroke="BLACK" strokeType="INSIDE" width="569.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="159.0" layoutX="41.0" layoutY="101.0" stroke="BLACK" strokeType="INSIDE" width="569.0" />
+      <GridPane layoutX="59.0" layoutY="178.0" prefHeight="60.0" prefWidth="545.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -21,11 +25,14 @@
             <Label text="Appointment Type" />
             <Label text="Month" GridPane.columnIndex="1" />
             <Label text="Total Appointments" GridPane.columnIndex="2" />
-            <Label fx:id="totalAppointmentCount" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Label fx:id="totalAppointmentCount" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Label>
          </children>
       </GridPane>
-      <Button layoutX="427.0" layoutY="344.0" mnemonicParsing="false" onAction="#onActionReturnToMainMenu" prefHeight="25.0" prefWidth="141.0" text="Return to Main Menu" />
-      <GridPane layoutX="34.0" layoutY="267.0" prefHeight="60.0" prefWidth="420.0">
+      <Button layoutX="486.0" layoutY="454.0" mnemonicParsing="false" onAction="#onActionReturnToMainMenu" prefHeight="25.0" prefWidth="141.0" text="Return to Main Menu" />
+      <GridPane layoutX="56.0" layoutY="343.0" prefHeight="83.0" prefWidth="418.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -38,8 +45,26 @@
             <Label text="Month" />
             <Label text="Percentage of Customers" GridPane.columnIndex="1" />
             <ComboBox fx:id="percentageMonthComboBox" onAction="#onActionPercentageMonthChosen" prefWidth="150.0" GridPane.rowIndex="1" />
-            <Label fx:id="percentageOfCustomers" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="percentageOfCustomers" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Label>
          </children>
       </GridPane>
+      <Label layoutX="58.0" layoutY="125.0" prefHeight="35.0" prefWidth="522.0" text="Total Customer Appointments of a Selected Type and Month" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="55.0" layoutY="302.0" prefHeight="35.0" prefWidth="545.0" text="Percentage of Customers with Appointments in Selected Month" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="41.0" layoutY="37.0" text="Customer Reports">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
