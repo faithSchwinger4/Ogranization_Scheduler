@@ -1,5 +1,6 @@
 package controller;
 
+import model.Customer;
 import model.User;
 import utility.AppointmentQuery;
 import utility.ContactQuery;
@@ -16,6 +17,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Contact;
+import utility.CustomerQuery;
 import utility.TimeConversion;
 
 import java.io.IOException;
@@ -36,12 +38,12 @@ public class AddAppointmentController implements Initializable {
     public TextField descriptionField;
     public TextField locationField;
     public TextField typeField;
-    public TextField customerIdField;
     public ComboBox startTimeComboBox;
     public ComboBox endTimeComboBox;
     public DatePicker datePicker;
 
     private static User currentUser;
+    public ComboBox customerComboBox;
 
 
     public static User getCurrentUser() {
@@ -52,6 +54,8 @@ public class AddAppointmentController implements Initializable {
         AddAppointmentController.currentUser = currentUser;
     }
 
+/** LAMBDA FUNCTIONS
+* */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<Contact> allContacts = FXCollections.observableArrayList();
@@ -61,18 +65,22 @@ public class AddAppointmentController implements Initializable {
             e.printStackTrace();
         }
 
-        for(Contact contact : allContacts) {
-            contactField.getItems().add(contact);
-        }
+        // fill contact comboBox with all contact options
+        allContacts.forEach( (c) -> {contactField.getItems().add(c);} );
 
+        // fill each time comboBox with all time options
         ObservableList<LocalTime> localTimes = TimeConversion.createTimeList();
-        for (LocalTime time : localTimes) {
-            startTimeComboBox.getItems().add(time);
-        }
-        for (LocalTime time : localTimes) {
-            endTimeComboBox.getItems().add(time);
-        }
+        localTimes.forEach( (t) -> {startTimeComboBox.getItems().add(t);} );
+        localTimes.forEach( (t) -> {endTimeComboBox.getItems().add(t);} );
 
+        // get all Customers and set the ID options to the comboBox
+        ObservableList<Customer> allCustomers = null;
+        try {
+            allCustomers = CustomerQuery.getAllCustomers();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        allCustomers.forEach( (c) -> {customerComboBox.getItems().add(c);} );
     }
 
     public void onActionSaveButtonPressed(ActionEvent actionEvent) throws IOException, SQLException {
@@ -87,7 +95,7 @@ public class AddAppointmentController implements Initializable {
         LocalDateTime end = TimeConversion.createLocalDateTime(datePicker.getValue(), (LocalTime) endTimeComboBox.getValue());
         LocalDateTime createDate = LocalDateTime.now(); //use for lastUpdate
         String createdBy = currentUser.getUserName(); //use for lastUpdateBy
-        int customerId = Integer.parseInt(customerIdField.getText());
+        int customerId = (int) customerComboBox.getValue();
         int userId = currentUser.getUserId();
 
 
