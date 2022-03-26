@@ -4,8 +4,7 @@ import javafx.collections.ObservableList;
 import model.Appointment;
 
 import java.sql.SQLException;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
+import java.time.*;
 
 public class AppointmentTimeValidation {
 
@@ -37,6 +36,19 @@ public class AppointmentTimeValidation {
         //if () {}
 
         return true;
+    }
+
+    public static LocalTime convertToEST(LocalDateTime localDateTime) {
+        //convert localDateTime being checked to zonedDateTime in current time zone
+        ZonedDateTime zonedDateTime = localDateTime.atZone(ZoneId.systemDefault());
+
+        Instant localToUTCInstant = zonedDateTime.toInstant();
+        ZonedDateTime localUTCToEST = localToUTCInstant.atZone(ZoneId.of("America/New_York"));
+
+        LocalDateTime convertedToEST = localUTCToEST.toLocalDateTime();
+        LocalTime convertedTime = convertedToEST.toLocalTime();
+
+        return convertedTime;
     }
 
 }
