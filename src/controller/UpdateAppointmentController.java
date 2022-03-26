@@ -10,16 +10,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Appointment;
 import model.Contact;
 import model.Customer;
 import model.User;
-import utility.AppointmentQuery;
-import utility.ContactQuery;
-import utility.CustomerQuery;
-import utility.TimeConversion;
+import utility.*;
 
 import java.io.IOException;
 import java.net.URL;
@@ -43,9 +41,10 @@ public class UpdateAppointmentController implements Initializable {
     public ComboBox<LocalTime> startTimeComboBox;
     public ComboBox<LocalTime> endTimeComboBox;
     public ComboBox customerIdComboBox;
+    public Label errorLabel;
 
 
-/** LAMBDA FUNCTIONS
+    /** LAMBDA FUNCTIONS
     * */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -89,7 +88,7 @@ public class UpdateAppointmentController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        allCustomers.forEach( (c) -> {customerIdComboBox.getItems().add(c);} );
+        allCustomers.forEach( (c) -> {customerIdComboBox.getItems().add(c.getCustomerId());} );
 
         //initialize the chosen customerID
         customerIdComboBox.setValue(appointment.getCustomerId());
@@ -120,15 +119,32 @@ public class UpdateAppointmentController implements Initializable {
         int userId = currentUser.getUserId();
         int appointmentId = appointment.getAppointmentId();
 
-        AppointmentQuery.update(appointmentId, title, description, location, type, Timestamp.valueOf(start), Timestamp.valueOf(end),
-                Timestamp.valueOf(lastUpdate), lastUpdatedBy, customerId, contactId, userId);
+        //check if the appointment time is valid for the customer
+        Boolean noConflictingAppointments = AppointmentTimeValidation.noConflictingAppointment(appointment, customerId, start, end);
+        Boolean duringBusinessHours = AppointmentTimeValidation.duringBusinessHours(start, end);
 
-        Parent root = FXMLLoader.load(getClass().getResource("/view/Appointments.fxml"));
-        Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 1000, 600);
-        stage.setTitle("Appointments");
-        stage.setScene(scene);
-        stage.show();
+
+        if (noConflictingAppointments && duringBusinessHours) {
+            AppointmentQuery.update(appointmentId, title, description, location, type, Timestamp.valueOf(start), Timestamp.valueOf(end),
+                    Timestamp.valueOf(lastUpdate), lastUpdatedBy, customerId, userId, contactId);
+
+            Parent root = FXMLLoader.load(getClass().getResource("/view/Appointments.fxml"));
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root, 1000, 600);
+            stage.setTitle("Appointments");
+            stage.setScene(scene);
+            stage.show();
+        }
+        else if (!noConflictingAppointments && !duringBusinessHours) {
+            errorLabel.setText("Error: Customer has existing appointment at this time. \nError: Appointment outside " +
+                    "business hours.");
+        }
+        else if (!noConflictingAppointments) {
+            errorLabel.setText("Error: Customer has existing appointment at this time.");
+        }
+        else {
+            errorLabel.setText("Error: Appointment outside business hours.");
+        }
     }
 
     public static User getCurrentUser() {

@@ -8,18 +8,34 @@ import java.time.*;
 
 public class AppointmentTimeValidation {
 
-    public static boolean noConflictingAppointment(int customerId, LocalDateTime start, LocalDateTime end) throws SQLException {
+    public static boolean noConflictingAppointment(Appointment appointment, int customerId, LocalDateTime start, LocalDateTime end) throws SQLException {
         // get all the appointments for once customer
         ObservableList<Appointment> customerAppointments = AppointmentQuery.getCustomerAppointments(customerId);
+        if (appointment == null) {
+            // skip this step
+            System.out.println("Skip else, appointment null");
+        }
+        else {
+            customerAppointments = AppointmentQuery.getAllAppointmentsExceptChosen(appointment.getAppointmentId());
+            if (customerAppointments.contains(appointment)) {
+                System.out.println("List contains correct item");
+            }
+            for (Appointment eachAppointment : customerAppointments) {
+                System.out.println(eachAppointment.getAppointmentId());
+            }
+        }
 
-        for (Appointment appointment : customerAppointments) {
-            if (start.isAfter(appointment.getStart()) && start.isBefore(appointment.getEnd())) {
+        for (Appointment appointment1 : customerAppointments) {
+            if (start.isAfter(appointment1.getStart()) && start.isBefore(appointment1.getEnd())) {
                 return false;
             }
-            if (start.isEqual(appointment.getStart()) || end.isEqual(appointment.getEnd())) {
+            if (start.isEqual(appointment1.getStart()) || end.isEqual(appointment1.getEnd())) {
                 return false;
             }
-            if (end.isAfter(appointment.getStart()) && end.isBefore(appointment.getEnd())) {
+            if (end.isAfter(appointment1.getStart()) && end.isBefore(appointment1.getEnd())) {
+                return false;
+            }
+            if (start.isBefore(appointment1.getStart()) && end.isAfter(appointment1.getEnd())) {
                 return false;
             }
         }
