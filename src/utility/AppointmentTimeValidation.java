@@ -33,7 +33,20 @@ public class AppointmentTimeValidation {
         // get the computers current time zone?\
         ZoneId currentZoneId = ZoneId.systemDefault();
 
-        //if () {}
+        LocalTime convertedStartTime = convertToEST(start);
+        LocalTime convertedEndTime = convertToEST(end);
+        LocalTime businessOpens = LocalTime.of(8,0);
+        LocalTime businessCloses = LocalTime.of(22,0);
+
+        if (convertedStartTime.isBefore(businessOpens) || convertedStartTime.isAfter(businessCloses)) {
+            return false;
+        }
+        if (convertedEndTime.isBefore(businessOpens) || convertedEndTime.isAfter(businessCloses)) {
+            return false;
+        }
+        if (convertedEndTime.equals(businessOpens) || convertedStartTime.equals(businessCloses)) {
+            return false;
+        }
 
         return true;
     }
