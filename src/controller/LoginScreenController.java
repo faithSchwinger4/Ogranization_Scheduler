@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -15,6 +16,7 @@ import utility.UserQuery;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.ZoneId;
 import java.util.ResourceBundle;
 
 public class LoginScreenController implements Initializable {
@@ -23,10 +25,19 @@ public class LoginScreenController implements Initializable {
     public TextField usernameField;
     public TextField passwordField;
     public Label localTimeZoneLabel;
+    public Label invalidUserLabel;
+    public Label userLoginLabel;
+    public Label usernameLabel;
+    public Label passwordLabel;
+    public Button loginButton;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //check local time zone, division, determine language to be spoken and translate
+        ZoneId currentZoneId = ZoneId.systemDefault();
+
+        localTimeZoneLabel.setText("Timezone: " + currentZoneId.toString());
+
     }
 
     public void onActionLoginButtonPressed(ActionEvent actionEvent) throws IOException, SQLException {
@@ -39,7 +50,7 @@ public class LoginScreenController implements Initializable {
 
         // if valid, next screen
         if (possibleUser == null) {
-
+            invalidUserLabel.setText("Error: Invalid username and password combination.\nPlease try again.");
         }
         else {
             MainMenuController.setCurrentUser(possibleUser);
@@ -50,6 +61,8 @@ public class LoginScreenController implements Initializable {
             stage.setTitle("Main Menu");
             stage.setScene(scene);
             stage.show();
+
+            // check if appointment in the next 15 minutes
         }
     }
 }

@@ -2,12 +2,47 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainMenuController">
    <children>
-      <Button layoutX="78.0" layoutY="143.0" mnemonicParsing="false" onAction="#onActionCustomersButtonPressed" text="View Customers" />
-      <Button layoutX="78.0" layoutY="183.0" mnemonicParsing="false" onAction="#onActionAppointmentsButtonPressed" text="View Appointments" />
-      <Button layoutX="78.0" layoutY="225.0" mnemonicParsing="false" onAction="#onActionSchedulesButtonPressed" text="Contact Schedules" />
-      <Button layoutX="78.0" layoutY="266.0" mnemonicParsing="false" onAction="#onCustomerReportsButtonPressed" text="Customer Reports" />
+      <GridPane layoutX="49.0" layoutY="147.0" prefHeight="256.0" prefWidth="297.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button mnemonicParsing="false" onAction="#onActionCustomersButtonPressed" prefHeight="35.0" prefWidth="355.0" text="View Customers">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#onActionAppointmentsButtonPressed" prefHeight="35.0" prefWidth="305.0" text="View Appointments" GridPane.rowIndex="1">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#onActionSchedulesButtonPressed" prefHeight="35.0" prefWidth="337.0" text="Contact Schedules" GridPane.rowIndex="2">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#onCustomerReportsButtonPressed" prefHeight="35.0" prefWidth="303.0" text="Customer Reports" GridPane.rowIndex="3">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </GridPane>
+      <Label layoutX="136.0" layoutY="78.0" text="Main Menu">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
