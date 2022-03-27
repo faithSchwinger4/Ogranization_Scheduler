@@ -43,6 +43,7 @@ public class AddAppointmentController implements Initializable {
     private static User currentUser;
     public ComboBox customerComboBox;
     public Label errorLabel;
+    public ComboBox userIdComboBox;
 
 
     public static User getCurrentUser() {
