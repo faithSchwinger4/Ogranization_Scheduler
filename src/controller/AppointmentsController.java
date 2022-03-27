@@ -32,6 +32,7 @@ import java.util.ResourceBundle;
 
 public class AppointmentsController implements Initializable {
 
+    public Label deletedAppointmentConfirmation;
     @FXML
     private TableView<Appointment> appointmentTable;
     @FXML
@@ -139,6 +140,9 @@ public class AppointmentsController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        deletedAppointmentConfirmation.setText("Appointment " + selectedAppointment.getAppointmentId() + " of type \"" +
+                selectedAppointment.getType() + "\" was canceled.");
     }
 
     public void onActionDisplayAllAppointments(ActionEvent actionEvent) {

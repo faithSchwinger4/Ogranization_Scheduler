@@ -6,7 +6,7 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomersController">
    <children>
-      <TableView fx:id="customersTable" layoutX="29.0" layoutY="77.0" prefHeight="313.0" prefWidth="946.0">
+      <TableView fx:id="customersTable" layoutX="29.0" layoutY="77.0" prefHeight="322.0" prefWidth="946.0">
         <columns>
           <TableColumn fx:id="customerIdColumn" prefWidth="96.0" text="Customer ID" />
           <TableColumn fx:id="nameColumn" prefWidth="138.0" text="Name" />
@@ -17,14 +17,15 @@
             <TableColumn fx:id="phoneNumberColumn" prefWidth="137.0" text="Phone Number" />
         </columns>
       </TableView>
-      <Button layoutX="29.0" layoutY="405.0" mnemonicParsing="false" onAction="#onActionAddCustomerButtonPressed" text="Add" />
-      <Button layoutX="850.0" layoutY="405.0" mnemonicParsing="false" onAction="#onActionUpdateCustomerButtonPressed" text="Update" />
-      <Button layoutX="920.0" layoutY="405.0" mnemonicParsing="false" onAction="#onActionDeleteCustomer" text="Delete" />
+      <Button layoutX="29.0" layoutY="410.0" mnemonicParsing="false" onAction="#onActionAddCustomerButtonPressed" text="Add" />
+      <Button layoutX="850.0" layoutY="410.0" mnemonicParsing="false" onAction="#onActionUpdateCustomerButtonPressed" text="Update" />
+      <Button layoutX="920.0" layoutY="410.0" mnemonicParsing="false" onAction="#onActionDeleteCustomer" text="Delete" />
        <Button layoutX="840.0" layoutY="455.0" mnemonicParsing="false" onAction="#onActionReturnToMainMenuButtonPressed" text="Return to Main Menu" />
       <Label layoutX="34.0" layoutY="36.0" text="Customers">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
+      <Label fx:id="deletedAppointmentConfirmation" layoutX="34.0" layoutY="459.0" prefHeight="17.0" prefWidth="774.0" />
    </children>
 </AnchorPane>

@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -27,6 +28,7 @@ import java.util.ResourceBundle;
 public class CustomersController implements Initializable {
 
     private static User currentUser;
+    public Label deletedAppointmentConfirmation;
     @FXML
     private TableView<Customer> customersTable;
     @FXML
@@ -121,5 +123,7 @@ public class CustomersController implements Initializable {
 
         ObservableList<Customer> currentCustomers = CustomerQuery.getAllCustomers();
         customersTable.setItems(currentCustomers);
+
+        deletedAppointmentConfirmation.setText("Customer " + customerIdToDelete + " was deleted.");
     }
 }
