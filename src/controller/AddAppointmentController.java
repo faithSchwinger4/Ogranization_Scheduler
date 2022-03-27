@@ -43,7 +43,7 @@ public class AddAppointmentController implements Initializable {
     private static User currentUser;
     public ComboBox customerComboBox;
     public Label errorLabel;
-    public ComboBox userIdComboBox;
+    public ComboBox<User> userIdComboBox;
 
 
     public static User getCurrentUser() {
@@ -66,12 +66,18 @@ public class AddAppointmentController implements Initializable {
         }
 
         // fill contact comboBox with all contact options
-        allContacts.forEach( (c) -> {contactField.getItems().add(c);} );
+        allContacts.forEach((c) -> {
+            contactField.getItems().add(c);
+        });
 
         // fill each time comboBox with all time options
         ObservableList<LocalTime> localTimes = TimeConversion.createTimeList();
-        localTimes.forEach( (t) -> {startTimeComboBox.getItems().add(t);} );
-        localTimes.forEach( (t) -> {endTimeComboBox.getItems().add(t);} );
+        localTimes.forEach((t) -> {
+            startTimeComboBox.getItems().add(t);
+        });
+        localTimes.forEach((t) -> {
+            endTimeComboBox.getItems().add(t);
+        });
 
         // get all Customers and set the ID options to the comboBox
         ObservableList<Customer> allCustomers = null;
@@ -80,7 +86,17 @@ public class AddAppointmentController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        allCustomers.forEach( (c) -> {customerComboBox.getItems().add(c.getCustomerId());} );
+        allCustomers.forEach((c) -> {
+            customerComboBox.getItems().add(c.getCustomerId());
+        });
+
+        ObservableList<User> allUsers = null;
+        try {
+            allUsers = UserQuery.getAllUsers();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        allUsers.forEach((u) -> userIdComboBox.getItems().add(u));
     }
 
     public void onActionSaveButtonPressed(ActionEvent actionEvent) throws IOException, SQLException {
