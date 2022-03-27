@@ -93,6 +93,10 @@ public class AppointmentsController implements Initializable {
                 new SimpleStringProperty(appointment.getValue().getStart().format(formatter)));
         endDateAndTime.setCellValueFactory(appointment ->
                 new SimpleStringProperty(appointment.getValue().getEnd().format(formatter)));
+
+        appointmentTable.getColumns().addAll(appointmentId);
+        appointmentTable.getSortOrder().add(appointmentId);
+        appointmentTable.sort();
     }
 
     public void onActionReturnToMainMenuButtonPressed(ActionEvent actionEvent) throws IOException {
@@ -140,6 +144,8 @@ public class AppointmentsController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        appointmentTable.getSortOrder().add(appointmentId);
+        appointmentTable.sort();
 
         deletedAppointmentConfirmation.setText("Appointment " + selectedAppointment.getAppointmentId() + " of type \"" +
                 selectedAppointment.getType() + "\" was canceled.");
@@ -167,6 +173,8 @@ public class AppointmentsController implements Initializable {
         }
 
         appointmentTable.setItems(appointmentsThisMonth);
+        appointmentTable.getSortOrder().add(appointmentId);
+        appointmentTable.sort();
     }
 
     public void onActionDisplayAppointmentsThisWeek(ActionEvent actionEvent) throws SQLException {
@@ -194,5 +202,7 @@ public class AppointmentsController implements Initializable {
         }
 
         appointmentTable.setItems(appointmentsThisWeek);
+        appointmentTable.getSortOrder().add(appointmentId);
+        appointmentTable.sort();
     }
 }
