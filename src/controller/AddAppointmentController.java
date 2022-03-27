@@ -112,7 +112,7 @@ public class AddAppointmentController implements Initializable {
         LocalDateTime createDate = LocalDateTime.now(); //use for lastUpdate
         String createdBy = currentUser.getUserName(); //use for lastUpdateBy
         int customerId = (int) customerComboBox.getValue();
-        int userId = currentUser.getUserId();
+        int userId = userIdComboBox.getValue().getUserId();
 
         //check if the appointment time is valid for the customer
         Boolean noConflictingAppointments = AppointmentTimeValidation.noConflictingAppointment(null, customerId, start, end);

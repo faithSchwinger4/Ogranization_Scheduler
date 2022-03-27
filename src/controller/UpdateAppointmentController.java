@@ -42,6 +42,7 @@ public class UpdateAppointmentController implements Initializable {
     public ComboBox<LocalTime> endTimeComboBox;
     public ComboBox customerIdComboBox;
     public Label errorLabel;
+    public ComboBox<User> userIdComboBox;
 
 
     /** LAMBDA FUNCTIONS
@@ -61,10 +62,12 @@ public class UpdateAppointmentController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        allContacts.forEach( (c) -> {contactComboBox.getItems().add(c);} );
+        allContacts.forEach((c) -> {
+            contactComboBox.getItems().add(c);
+        });
 
         //choose which contact automatically displayed
-        for(Contact contact : allContacts) {
+        for (Contact contact : allContacts) {
             if (appointment.getContactId() == contact.getContactId()) {
                 contactComboBox.setValue(contact);
             }
@@ -74,8 +77,12 @@ public class UpdateAppointmentController implements Initializable {
 
         // fill each time comboBox with all time options
         ObservableList<LocalTime> localTimes = TimeConversion.createTimeList();
-        localTimes.forEach( (t) -> {startTimeComboBox.getItems().add(t);} );
-        localTimes.forEach( (t) -> {endTimeComboBox.getItems().add(t);} );
+        localTimes.forEach((t) -> {
+            startTimeComboBox.getItems().add(t);
+        });
+        localTimes.forEach((t) -> {
+            endTimeComboBox.getItems().add(t);
+        });
 
         //set the time loaded from the appointment
         startTimeComboBox.setValue(appointment.getStart().toLocalTime());
@@ -88,10 +95,30 @@ public class UpdateAppointmentController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        allCustomers.forEach( (c) -> {customerIdComboBox.getItems().add(c.getCustomerId());} );
+        allCustomers.forEach((c) -> {
+            customerIdComboBox.getItems().add(c.getCustomerId());
+        });
 
-        //initialize the chosen customerID
+        //initialize the original customerID
         customerIdComboBox.setValue(appointment.getCustomerId());
+
+        // User Id options into comboBox
+        ObservableList<User> allUsers = null;
+        try {
+            allUsers = UserQuery.getAllUsers();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        allUsers.forEach((u) -> userIdComboBox.getItems().add(u));
+
+        //initialize the original userId
+        User user = null;
+        try {
+            user = UserQuery.getUser(appointment.getUserId());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        userIdComboBox.setValue(user);
     }
 
 
@@ -116,7 +143,7 @@ public class UpdateAppointmentController implements Initializable {
         LocalDateTime lastUpdate = LocalDateTime.now(); //use for lastUpdate
         String lastUpdatedBy = currentUser.getUserName(); //use for lastUpdateBy
         int customerId = (int) customerIdComboBox.getValue();
-        int userId = currentUser.getUserId();
+        int userId = userIdComboBox.getValue().getUserId();
         int appointmentId = appointment.getAppointmentId();
 
         //check if the appointment time is valid for the customer

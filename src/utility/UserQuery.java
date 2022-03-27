@@ -27,6 +27,19 @@ public class UserQuery {
         return allUsers;
     }
 
+    public static User getUser(int userId) throws SQLException {
+        String sql = "SELECT * FROM Users WHERE User_ID = ?";
+        PreparedStatement ps = JDBC.connection.prepareStatement(sql);
+        ps.setInt(1, userId);
+
+        ResultSet rs = ps.executeQuery();
+        rs.next();
+        String userName = rs.getString("User_Name");
+        String password = rs.getString("Password");
+
+        return new User(userId, userName, password);
+    }
+
     public static User validateUserInfo(String trialUserName, String trialPassword) throws SQLException {
         String sql = "SELECT User_ID, User_Name, Password FROM Users WHERE User_Name = ? AND Password = ?";
         PreparedStatement ps = JDBC.connection.prepareStatement(sql);
