@@ -1,7 +1,10 @@
 package model;
 
+import javafx.beans.property.ObjectProperty;
+
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Appointment {
     private int appointmentId;

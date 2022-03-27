@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
@@ -26,6 +27,7 @@ import java.sql.Timestamp;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class AppointmentsController implements Initializable {
@@ -45,7 +47,7 @@ public class AppointmentsController implements Initializable {
     @FXML
     private TableColumn<Appointment, String> type;
     @FXML
-    private TableColumn<Appointment, Timestamp> startDateAndTime;
+    private TableColumn<Appointment, String> startDateAndTime;
     @FXML
     private TableColumn<Appointment, Timestamp> endDateAndTime;
     @FXML
@@ -81,8 +83,14 @@ public class AppointmentsController implements Initializable {
         location.setCellValueFactory(new PropertyValueFactory<>("location"));
         contact.setCellValueFactory(new PropertyValueFactory<>("contactName"));
         type.setCellValueFactory(new PropertyValueFactory<>("type"));
-        startDateAndTime.setCellValueFactory(new PropertyValueFactory<>("start"));
+        //startDateAndTime.setCellValueFactory(new PropertyValueFactory<>("start"));
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm");
+        startDateAndTime.setCellValueFactory(appointment -> new SimpleStringProperty(appointment.getValue().getStart().format(formatter)));
+
         endDateAndTime.setCellValueFactory(new PropertyValueFactory<>("end"));
+
+
         customerId.setCellValueFactory(new PropertyValueFactory<>("customerId"));
         userId.setCellValueFactory(new PropertyValueFactory<>("userId"));
     }
