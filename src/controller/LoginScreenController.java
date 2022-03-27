@@ -61,8 +61,6 @@ public class LoginScreenController implements Initializable {
             stage.setTitle("Main Menu");
             stage.setScene(scene);
             stage.show();
-
-            // check if appointment in the next 15 minutes
         }
     }
 }
