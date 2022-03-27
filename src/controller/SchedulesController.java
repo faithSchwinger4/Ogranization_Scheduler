@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,6 +23,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class SchedulesController implements Initializable {
@@ -39,9 +41,9 @@ public class SchedulesController implements Initializable {
     @FXML
     private TableColumn<Appointment, String> typeColumn;
     @FXML
-    private TableColumn<Appointment, Timestamp> startColumn;
+    private TableColumn<Appointment, String> startColumn;
     @FXML
-    private TableColumn<Appointment, Timestamp> endColumn;
+    private TableColumn<Appointment, String> endColumn;
     @FXML
     private TableColumn<Appointment, Integer> customerIdColumn;
 
@@ -63,9 +65,14 @@ public class SchedulesController implements Initializable {
         titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
         descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
         typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
-        startColumn.setCellValueFactory(new PropertyValueFactory<>("start"));
-        endColumn.setCellValueFactory(new PropertyValueFactory<>("end"));
         customerIdColumn.setCellValueFactory(new PropertyValueFactory<>("customerId"));
+
+        //fill and format time columns
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm");
+        startColumn.setCellValueFactory(appointment ->
+                new SimpleStringProperty(appointment.getValue().getStart().format(formatter)));
+        endColumn.setCellValueFactory(appointment ->
+                new SimpleStringProperty(appointment.getValue().getEnd().format(formatter)));
     }
 
     public void onActionContactChosen(ActionEvent actionEvent) throws SQLException {

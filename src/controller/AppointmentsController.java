@@ -49,7 +49,7 @@ public class AppointmentsController implements Initializable {
     @FXML
     private TableColumn<Appointment, String> startDateAndTime;
     @FXML
-    private TableColumn<Appointment, Timestamp> endDateAndTime;
+    private TableColumn<Appointment, String> endDateAndTime;
     @FXML
     private TableColumn<Appointment, Integer> customerId;
     @FXML
@@ -83,16 +83,15 @@ public class AppointmentsController implements Initializable {
         location.setCellValueFactory(new PropertyValueFactory<>("location"));
         contact.setCellValueFactory(new PropertyValueFactory<>("contactName"));
         type.setCellValueFactory(new PropertyValueFactory<>("type"));
-        //startDateAndTime.setCellValueFactory(new PropertyValueFactory<>("start"));
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm");
-        startDateAndTime.setCellValueFactory(appointment -> new SimpleStringProperty(appointment.getValue().getStart().format(formatter)));
-
-        endDateAndTime.setCellValueFactory(new PropertyValueFactory<>("end"));
-
-
         customerId.setCellValueFactory(new PropertyValueFactory<>("customerId"));
         userId.setCellValueFactory(new PropertyValueFactory<>("userId"));
+
+        // fill and format time columns
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm");
+        startDateAndTime.setCellValueFactory(appointment ->
+                new SimpleStringProperty(appointment.getValue().getStart().format(formatter)));
+        endDateAndTime.setCellValueFactory(appointment ->
+                new SimpleStringProperty(appointment.getValue().getEnd().format(formatter)));
     }
 
     public void onActionReturnToMainMenuButtonPressed(ActionEvent actionEvent) throws IOException {
