@@ -14,6 +14,7 @@ import model.User;
 import utility.UserQuery;
 
 import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.ZoneId;
@@ -54,6 +55,8 @@ public class LoginScreenController implements Initializable {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
+        PrintWriter pwVariable = new PrintWriter("login_activity.txt"); //FIXME filename
+
         // check db for validity
         User possibleUser = UserQuery.validateUserInfo(username, password);
 
@@ -65,9 +68,12 @@ public class LoginScreenController implements Initializable {
                     rb.getString("username") + " " + rb.getString("and") + " " + rb.getString("password")
                     + " " + rb.getString("combination") + ".\n" + rb.getString("Please") + " " +
                     rb.getString("try") + " " + rb.getString("again") + ".");
+            pwVariable.println("invalid"); //FIXME invalid login
         }
         else {
             MainMenuController.setCurrentUser(possibleUser);
+
+            pwVariable.println(); //FIXME valid login
 
             Parent root = FXMLLoader.load(getClass().getResource("/view/MainMenu.fxml"));
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
