@@ -1,6 +1,5 @@
 package main;
 
-import utility.AppointmentTimeValidation;
 import utility.JDBC;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -9,9 +8,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.sql.SQLException;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.ZoneId;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
