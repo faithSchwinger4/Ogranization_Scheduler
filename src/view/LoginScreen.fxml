@@ -6,10 +6,10 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginScreenController">
    <children>
-      <Button fx:id="loginButton" layoutX="277.0" layoutY="257.0" mnemonicParsing="false" onAction="#onActionLoginButtonPressed" text="Login" />
+      <Button fx:id="loginButton" alignment="CENTER" contentDisplay="CENTER" layoutX="225.0" layoutY="257.0" mnemonicParsing="false" onAction="#onActionLoginButtonPressed" prefHeight="25.0" prefWidth="98.0" text="Login" textAlignment="CENTER" />
       <TextField fx:id="usernameField" layoutX="226.0" layoutY="140.0" />
       <TextField fx:id="passwordField" layoutX="226.0" layoutY="210.0" />
-      <Label fx:id="userLoginLabel" layoutX="215.0" layoutY="29.0" text="User Login">
+      <Label fx:id="userLoginLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="29.0" prefHeight="53.0" prefWidth="561.0" text="User Login">
          <font>
             <Font size="36.0" />
          </font>
