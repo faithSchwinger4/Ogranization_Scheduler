@@ -17,6 +17,8 @@ import java.io.IOException;
 import java.io.*;
 import java.net.URL;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -54,8 +56,10 @@ public class LoginScreenController implements Initializable {
         // take in username, password
         String username = usernameField.getText();
         String password = passwordField.getText();
+        Timestamp loginAttemptTime = Timestamp.valueOf(LocalDateTime.now()  );
 
-        PrintWriter pwVariable = new PrintWriter("login_activity.txt"); //FIXME filename
+        FileWriter fwVariable = new FileWriter("login_activity.txt", true);
+        PrintWriter pwVariable = new PrintWriter(fwVariable);
 
         // check db for validity
         User possibleUser = UserQuery.validateUserInfo(username, password);
@@ -68,12 +72,17 @@ public class LoginScreenController implements Initializable {
                     rb.getString("username") + " " + rb.getString("and") + " " + rb.getString("password")
                     + " " + rb.getString("combination") + ".\n" + rb.getString("Please") + " " +
                     rb.getString("try") + " " + rb.getString("again") + ".");
-            pwVariable.println("invalid"); //FIXME invalid login
+
+            // record unsuccessful login attempt
+            pwVariable.println(username + " " + password + " " + loginAttemptTime + " unsuccessful");
+            pwVariable.close();
         }
         else {
             MainMenuController.setCurrentUser(possibleUser);
 
-            pwVariable.println(); //FIXME valid login
+            // record successful login attempt
+            pwVariable.println(username + " " + password + " " + loginAttemptTime + " successful");
+            pwVariable.close();
 
             Parent root = FXMLLoader.load(getClass().getResource("/view/MainMenu.fxml"));
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
