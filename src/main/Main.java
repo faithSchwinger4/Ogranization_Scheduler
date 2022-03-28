@@ -12,12 +12,17 @@ import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/view/LoginScreen.fxml"));
-        stage.setTitle("Login Screen");
+
+        ResourceBundle rb = ResourceBundle.getBundle("lang/Nat", Locale.getDefault());
+
+        stage.setTitle(rb.getString("Login") + " " + rb.getString("Screen"));
         stage.setScene(new Scene(root,600,400));
         stage.show();
     }
