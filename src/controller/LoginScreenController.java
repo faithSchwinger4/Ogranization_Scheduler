@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.ZoneId;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class LoginScreenController implements Initializable {
@@ -35,8 +36,16 @@ public class LoginScreenController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //check local time zone, division, determine language to be spoken and translate
         ZoneId currentZoneId = ZoneId.systemDefault();
+        ResourceBundle rb = ResourceBundle.getBundle("lang/Nat", Locale.getDefault());
 
-        localTimeZoneLabel.setText("Timezone: " + currentZoneId.toString());
+        //set timezone display in proper language
+        localTimeZoneLabel.setText(rb.getString("Timezone") + ": " + currentZoneId.toString());
+
+        userLoginLabel.setText(rb.getString("User") + " " + rb.getString("Login"));
+        usernameLabel.setText(rb.getString("Username"));
+        passwordLabel.setText(rb.getString("Password"));
+
+        loginButton.setText(rb.getString("Login"));
 
     }
 
@@ -50,7 +59,12 @@ public class LoginScreenController implements Initializable {
 
         // if valid, next screen
         if (possibleUser == null) {
-            invalidUserLabel.setText("Error: Invalid username and password combination.\nPlease try again.");
+            ResourceBundle rb = ResourceBundle.getBundle("lang/Nat", Locale.getDefault());
+
+            invalidUserLabel.setText(rb.getString("Error") + ": " + rb.getString("Invalid") + " " +
+                    rb.getString("username") + " " + rb.getString("and") + " " + rb.getString("password")
+                    + " " + rb.getString("combination") + ".\n" + rb.getString("Please") + " " +
+                    rb.getString("try") + " " + rb.getString("again") + ".");
         }
         else {
             MainMenuController.setCurrentUser(possibleUser);
