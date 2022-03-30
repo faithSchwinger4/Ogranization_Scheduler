@@ -29,24 +29,64 @@ import java.util.ResourceBundle;
 
 public class UpdateAppointmentController implements Initializable {
 
+    /** Stores the current user's information as a User object. This allows the Appointment screen to pass through the
+     * current user's information. */
     private static User currentUser;
+
+    /** This stores the appointment object the user chose to update in the Appointments screen. It is used to initialize
+     * all the fields on this screen. */
     private static Appointment appointment;
+
+    /** The field for the updated appointment title to be input. */
     public TextField titleField;
+
+    /** The field for the appointment ID to be displayed that doesn't allow the user to edit it. */
     public TextField appointmentIdField;
+
+    /** The combo box for the updated contact to be chosen. */
     public ComboBox contactComboBox;
+
+    /** The date picker for the updated appointment date to be chosen. */
     public DatePicker datePicker;
+
+    /** The field for the updated appointment description to be input. */
     public TextField descriptionField;
+
+    /** The field for the updated appointment location to be input. */
     public TextField locationField;
+
+    /** The field for the updated appointment type to be input. */
     public TextField typeField;
+
+    /** The combo box for the updated appointment start time to be chosen. */
     public ComboBox<LocalTime> startTimeComboBox;
+
+    /** The combo box for the updated appointment end time to be chosen. */
     public ComboBox<LocalTime> endTimeComboBox;
+
+    /** The combo box for the updated appointment customer ID to be chosen. */
     public ComboBox customerIdComboBox;
+
+    /** The label where any errors are printed out to. Here the user is made aware of any invalid start or end times and
+     * the reason why they're invalid. */
     public Label errorLabel;
+
+    /** The combo box for the updated appointment user ID to be chosen. */
     public ComboBox<User> userIdComboBox;
 
 
-    /** LAMBDA FUNCTIONS
-    * */
+    /** This function initializes all the comboBoxes on the screen including the ones for contacts, appointment start times,
+     * appointment end times, customer IDs, and user IDs with the appropriate options. This prevents the user from adding
+     * an appointment with the incorrect contact, customer, or user ID that would prevent it from being added to the database.
+     * It also loads in the data from the selected appointment into each field on the page, including selecting the
+     * correct choice from each comboBox.
+     * <p>
+     *     LAMBDA FUNCTIONS
+     *     There are 5 lambda functions in this method. Each one utilizes a .forEach appended to an ObservableList with a
+     *     lambda function specifying that each item in the list is to be added to a specific comboBox. This made my code
+     *     much simpler and cleaner.
+     * </p>
+     * */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         appointmentIdField.setText(Integer.toString(appointment.getAppointmentId()));
@@ -121,7 +161,7 @@ public class UpdateAppointmentController implements Initializable {
         userIdComboBox.setValue(user);
     }
 
-
+    /** This method will return the user to the Appointments screen without updating any existing appointment data. */
     public void onActionCancelButtonPressed(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/Appointments.fxml"));
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
@@ -131,6 +171,11 @@ public class UpdateAppointmentController implements Initializable {
         stage.show();
     }
 
+    /** When the save button is pressed, this method will validate the input appointment start and end date and times.
+     * If the times don't conflict with a customer's previous appointment, and they are inside business hours, then
+     * the information from all the fields is used to update the existing appointment in the database with a query using
+     * the appointment ID.
+     * It will then redirect the user to the Appointments screen. */
     public void onActionSaveButtonPressed(ActionEvent actionEvent) throws IOException, SQLException {
         String title = titleField.getText();
         String description = descriptionField.getText();
@@ -174,18 +219,21 @@ public class UpdateAppointmentController implements Initializable {
         }
     }
 
-    public static User getCurrentUser() {
-        return currentUser;
-    }
-
+    /** This function sets the current user information. It allows the previous screen to pass through the information
+     * for the current user.
+     * @param currentUser is the User object representing the current user logged into the application. */
     public static void setCurrentUser(User currentUser) {
         UpdateAppointmentController.currentUser = currentUser;
     }
 
+    /** This function gets the current appointment object that is being updated.
+     * @return returns the current appointment object being updated */
     public static Appointment getAppointment() {
         return appointment;
     }
 
+    /** This function sets the appointment that the user wants to update.
+     * @param appointment is the appointment object used to initialize the fields on the update appointment screen */
     public static void setAppointment(Appointment appointment) {
         UpdateAppointmentController.appointment = appointment;
     }
