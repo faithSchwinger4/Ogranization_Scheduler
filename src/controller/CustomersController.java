@@ -144,24 +144,29 @@ public class CustomersController implements Initializable {
      * confirmation of and the specifics for the Customer that was deleted.It then updates the customer table
      * to display only the current customers in the database. */
     public void onActionDeleteCustomer(ActionEvent actionEvent) throws SQLException {
-        int customerIdToDelete = customersTable.getSelectionModel().getSelectedItem().getCustomerId();
+        try {
+            int customerIdToDelete = customersTable.getSelectionModel().getSelectedItem().getCustomerId();
 
-        // find the customer's appointments, place in an OL
-        ObservableList<Appointment> customerAppointments = FXCollections.observableArrayList();
-        customerAppointments = AppointmentQuery.getCustomerAppointments(customerIdToDelete);
+            // find the customer's appointments, place in an OL
+            ObservableList<Appointment> customerAppointments = FXCollections.observableArrayList();
+            customerAppointments = AppointmentQuery.getCustomerAppointments(customerIdToDelete);
 
-        // delete using for loop and appt query
-        for (Appointment appointment : customerAppointments) {
-            AppointmentQuery.delete(appointment.getAppointmentId());
-            System.out.println("deleting appointments");
+            // delete using for loop and appt query
+            for (Appointment appointment : customerAppointments) {
+                AppointmentQuery.delete(appointment.getAppointmentId());
+                System.out.println("deleting appointments");
+            }
+
+            // delete the customer from db
+            CustomerQuery.delete(customerIdToDelete);
+
+            ObservableList<Customer> currentCustomers = CustomerQuery.getAllCustomers();
+            customersTable.setItems(currentCustomers);
+
+            deletedCustomerConfirmation.setText("Customer " + customerIdToDelete + " was deleted.");
         }
-
-        // delete the customer from db
-        CustomerQuery.delete(customerIdToDelete);
-
-        ObservableList<Customer> currentCustomers = CustomerQuery.getAllCustomers();
-        customersTable.setItems(currentCustomers);
-
-        deletedCustomerConfirmation.setText("Customer " + customerIdToDelete + " was deleted.");
+        catch(Exception e) {
+            deletedCustomerConfirmation.setText("ERROR: Please select a customer to delete.");
+        }
     }
 }

@@ -19,7 +19,9 @@ public class TimeHelper {
         return newDateTime;
     }
 
-    /** This function  */
+    /** This function creates Local Time objects at 30 minute increments over a period of 24 hours. It then places each
+     * of these objects in an ObservableList that is returned by the function.
+     * @return an ObservableList of LocalTime objects over a 24-hour period in 30 minutes increments*/
     public static ObservableList<LocalTime> createTimeList() {
         ObservableList<LocalTime> times = FXCollections.observableArrayList();
         for (int i = 0; i < 24; ++i) {

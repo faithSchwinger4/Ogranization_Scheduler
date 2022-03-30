@@ -176,21 +176,26 @@ public class AppointmentsController implements Initializable {
      * confirmation of and the specifics for the appointment that was "canceled".It then updates the appointment table
      * to display only the existing appointments left in the database. */
     public void onActionDeleteAppointment(ActionEvent actionEvent) throws SQLException {
-        Appointment selectedAppointment = appointmentTable.getSelectionModel().getSelectedItem();
-
-        AppointmentQuery.delete(selectedAppointment.getAppointmentId());
-
-        // get observable list of all appointments
         try {
-            appointmentTable.setItems(AppointmentQuery.getAllAppointments());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        appointmentTable.getSortOrder().add(appointmentId);
-        appointmentTable.sort();
+            Appointment selectedAppointment = appointmentTable.getSelectionModel().getSelectedItem();
 
-        deletedAppointmentConfirmation.setText("Appointment " + selectedAppointment.getAppointmentId() + " of type \"" +
-                selectedAppointment.getType() + "\" was canceled.");
+            AppointmentQuery.delete(selectedAppointment.getAppointmentId());
+
+            // get observable list of all appointments
+            try {
+                appointmentTable.setItems(AppointmentQuery.getAllAppointments());
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            appointmentTable.getSortOrder().add(appointmentId);
+            appointmentTable.sort();
+
+            deletedAppointmentConfirmation.setText("Appointment " + selectedAppointment.getAppointmentId() + " of type \"" +
+                    selectedAppointment.getType() + "\" was canceled.");
+        }
+        catch(Exception e) {
+            deletedAppointmentConfirmation.setText("ERROR: Please select an appointment to delete.");
+        }
     }
 
     /** This function displays all the appointments in the database in the appointments table when the user selects the
