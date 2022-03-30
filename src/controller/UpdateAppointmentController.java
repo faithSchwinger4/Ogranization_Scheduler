@@ -76,7 +76,7 @@ public class UpdateAppointmentController implements Initializable {
     public ComboBox<User> userIdComboBox;
 
 
-    /** This function initializes all the comboBoxes on the screen including the ones for contacts, appointment start times,
+    /** LAMBDA This function initializes all the comboBoxes on the screen including the ones for contacts, appointment start times,
      * appointment end times, customer IDs, and user IDs with the appropriate options. This prevents the user from adding
      * an appointment with the incorrect contact, customer, or user ID that would prevent it from being added to the database.
      * It also loads in the data from the selected appointment into each field on the page, including selecting the

@@ -76,9 +76,9 @@ public class AddAppointmentController implements Initializable {
         AddAppointmentController.currentUser = currentUser;
     }
 
-    /** This function initializes all the comboBoxes on the screen including the ones for contacts, appointment start times,
+    /** LAMBDA This function initializes all the comboBoxes on the screen including the ones for contacts, appointment start times,
      * appointment end times, customer IDs, and user IDs with the appropriate options. This prevents the user from adding
-     * an appointment with the incorrect contact, customer, or user ID that would prevent it from being added to the database.
+     * an appointment with the incorrect contact, customer, or user ID that would prevent it from being added to the database
      * <p>
      *     LAMBDA FUNCTIONS
      *     There are 5 lambda functions in this method. Each one utilizes a .forEach appended to an ObservableList with a
