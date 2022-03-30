@@ -72,7 +72,7 @@ public class Customer {
     }
 
     /** This function sets a customer's ID number.
-     * @param customerId sets a customer's ID number */
+     * @param customerId a customer's ID number */
     public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }
@@ -126,82 +126,98 @@ public class Customer {
     }
 
 
-
+    /** This function gets the name of the customer.
+     * @param customerName  the name of the customer */
     public void setCustomerName(String customerName) {
         this.customerName = customerName;
     }
 
-
+    /** This sets gets the address of the customer.
+     * @param address the address of the customer */
     public void setAddress(String address) {
         this.address = address;
     }
 
-
+    /** This function sets the customer's postal code.
+     * @param postalCode the customer's postal code */
     public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
     }
 
-
+    /** This function sets the customer's phone number.
+     * @param phoneNumber the customer's phone number */
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
-
+    /** This function gets the date and time an appointment was created
+     * @return gets the date and time an appointment was created */
     public LocalDateTime getCreateDate() {
         return createDate;
     }
 
-
+    /** This function sets the date and time an appointment was created
+     * @param createDate the date and time an appointment was created */
     public void setCreateDate(LocalDateTime createDate) {
         this.createDate = createDate;
     }
 
-
+    /** This function gets the name of whoever created a customer
+     * @return the name of whoever created a customer */
     public String getCreatedBy() {
         return createdBy;
     }
 
-
+    /** This function sets the name of whoever created an appointment
+     * @param createdBy the name of whoever created an appointment */
     public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
     }
 
-
+    /** This function gets the name of whoever last updated an appointment
+     * @return gets the name of whoever last updated an appointment */
     public String getLastUpdatedBy() {
         return lastUpdatedBy;
     }
 
-
+    /** This function sets the name of whoever last updated an appointment
+     * @param lastUpdatedBy name of whoever last updated an appointment */
     public void setLastUpdatedBy(String lastUpdatedBy) {
         this.lastUpdatedBy = lastUpdatedBy;
     }
 
-
+    /** This function sets the division ID associated with a customer.
+     * @param divisionId the customer ID associated with a customer */
     public void setDivisionId(int divisionId) {
         this.divisionId = divisionId;
     }
 
-
+    /** This function sets the country ID associated with a customer.
+     * @param countryId the country ID associated with a customer */
     public void setCountryId(int countryId) {
         this.countryId = countryId;
     }
 
-
+    /** This function gets division ID where the customer lives.
+     * @return the division ID where the customer lives */
     public String getDivisionName() {
         return divisionName;
     }
 
-
+    /** This function sets the division ID where the customer lives.
+     * @param divisionName the division ID where the customer lives */
     public void setDivisionName(String divisionName) {
         this.divisionName = divisionName;
     }
 
-
+    /** This function gets name of the country where the customer lives.
+     * @return the name of the country where the customer lives */
     public String getCountryName() {
         return countryName;
     }
 
-
+    /** This function sets name of the country where the customer lives.
+     * @param countryName the name of the country where the customer lives */
     public void setCountryName(String countryName) {
         this.countryName = countryName;
     }

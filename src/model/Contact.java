@@ -27,7 +27,7 @@ public class Contact {
     }
 
     /** This function sets a contact's ID number.
-     * @param contactId sets a contact's ID number */
+     * @param contactId a contact's ID number */
     public void setContactId(int contactId) {
         this.contactId = contactId;
     }
@@ -39,7 +39,7 @@ public class Contact {
     }
 
     /** This function sets a contact's name.
-     * @param contactName sets a contact's name */
+     * @param contactName a contact's name */
     public void setContactName(String contactName) {
         this.contactName = contactName;
     }
@@ -51,7 +51,7 @@ public class Contact {
     }
 
     /** This function sets a contact's email.
-     * @param email sets a contact's email */
+     * @param email a contact's email */
     public void setEmail(String email) {
         this.email = email;
     }

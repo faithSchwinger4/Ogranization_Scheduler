@@ -48,7 +48,7 @@ public class Country {
     }
 
     /** This method sets the last date and time the country was updated in the database.
-     * @param lastUpdate sets the last date and time the country was updated */
+     * @param lastUpdate the last date and time the country was updated */
     public void setLastUpdate(LocalDateTime lastUpdate) {
         this.lastUpdate = lastUpdate;
     }

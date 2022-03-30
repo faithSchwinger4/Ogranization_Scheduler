@@ -58,47 +58,68 @@ public class FirstLevelDivision {
         this.lastUpdate = lastUpdate;
     }
 
-
+    /** This function sets a first-level-division's ID number.
+     * @param divisionId a first-level-division's ID number */
     public void setDivisionId(int divisionId) {
         this.divisionId = divisionId;
     }
 
+    /** This function gets a first-level-division's name.
+     * @return a first-level-division's name */
     public String getDivision() {
         return division;
     }
 
+    /** This function sets a first-level-division's name.
+     * @param division a first-level-division's name */
     public void setDivision(String division) {
         this.division = division;
     }
 
+    /** This function gets the date and time a first-level-division's was created.
+     * @return the date and time a first-level-division's was created */
     public LocalDateTime getCreateDate() {
         return createDate;
     }
 
+    /** This function sets the date and time a first-level-division's was created.
+     * @param createDate the date and time a first-level-division's was created */
     public void setCreateDate(LocalDateTime createDate) {
         this.createDate = createDate;
     }
 
+    /** This function gets the name of whoever created a first-level-division.
+     * @return the name of whoever created a first-level-division */
     public String getCreatedBy() {
         return createdBy;
     }
 
+    /** This function sets the name of whoever created a first-level-division.
+     * @param createdBy the name of whoever created a first-level-division */
     public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
     }
 
+    /** This function gets the name of whoever last updated a first-level-division.
+     * @return the name of whoever last updated a first-level-division */
     public String getLastUpdatedBy() {
         return lastUpdatedBy;
     }
 
+    /** This function sets the name of whoever last updated a first-level-division.
+     * @param lastUpdatedBy the name of whoever last updated a first-level-division */
     public void setLastUpdatedBy(String lastUpdatedBy) {
         this.lastUpdatedBy = lastUpdatedBy;
     }
 
+    /** This function gets the ID for the country a first-level-division is in.
+     * @return the ID for the country a first-level-division lives in */
     public int getCountryId() {
         return countryId;
     }
 
+    /** This function sets the ID for the country a first-level-division is in.
+     * @return the ID for the country a first-level-division lives in */
     public void setCountryId(int countryId) {
         this.countryId = countryId;
     }

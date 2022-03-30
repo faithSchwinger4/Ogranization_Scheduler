@@ -103,7 +103,7 @@ public class Appointment {
     }
 
     /** This function sets the location of an appointment.
-     * @param location sets the location of an appointment */
+     * @param location the location of an appointment */
     public void setLocation(String location) {
         this.location = location;
     }
@@ -115,7 +115,7 @@ public class Appointment {
     }
 
     /** This function sets the type of appointment.
-     * @param type sets the type of appointment */
+     * @param type the type of appointment */
     public void setType(String type) {
         this.type = type;
     }
@@ -127,7 +127,7 @@ public class Appointment {
     }
 
     /** This function sets the start date and time of an appointment.
-     * @param start sets the start date and time of an appointment */
+     * @param start the start date and time of an appointment */
     public void setStart(LocalDateTime start) {
         this.start = start;
     }
@@ -139,7 +139,7 @@ public class Appointment {
     }
 
     /** This function sets the end date and time of an appointment.
-     * @param end sets the end date and time of an appointment */
+     * @param end the end date and time of an appointment */
     public void setEnd(LocalDateTime end) {
         this.end = end;
     }
@@ -151,7 +151,7 @@ public class Appointment {
     }
 
     /** This function sets the date and time of the last update of an appointment.
-     * @param lastUpdate sets the start date and time of the last update of an appointment */
+     * @param lastUpdate the start date and time of the last update of an appointment */
     public void setLastUpdate(LocalDateTime lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
@@ -181,61 +181,61 @@ public class Appointment {
     }
 
     /** This function sets the ID of an appointment
-     * @param appointmentId sets the ID of an appointment */
+     * @param appointmentId the ID of an appointment */
     public void setAppointmentId(int appointmentId) {
         this.appointmentId = appointmentId;
     }
 
     /** This function sets the description of an appointment
-     * @param description sets the description of an appointment */
+     * @param description the description of an appointment */
     public void setDescription(String description) {
         this.description = description;
     }
 
     /** This function gets the date and time an appointment was created
-     * @return gets the date and time an appointment was created */
+     * @return the date and time an appointment was created */
     public LocalDateTime getCreateDate() {
         return createDate;
     }
 
     /** This function sets the date and time an appointment was created
-     * @param createDate  sets the date and time an appointment was created */
+     * @param createDate the date and time an appointment was created */
     public void setCreateDate(LocalDateTime createDate) {
         this.createDate = createDate;
     }
 
     /** This function gets the name of whoever created an appointment
-     * @return gets the name of whoever created an appointment */
+     * @return the name of whoever created an appointment */
     public String getCreatedBy() {
         return createdBy;
     }
 
     /** This function sets the name of whoever created an appointment
-     * @param createdBy sets the name of whoever created an appointment */
+     * @param createdBy the name of whoever created an appointment */
     public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
     }
 
     /** This function gets the name of whoever last updated an appointment
-     * @return gets the name of whoever last updated an appointment */
+     * @return the name of whoever last updated an appointment */
     public String getLastUpdatedBy() {
         return lastUpdatedBy;
     }
 
     /** This function sets the name of whoever last updated an appointment
-     * @param lastUpdatedBy  sets the name of whoever last updated an appointment */
+     * @param lastUpdatedBy the name of whoever last updated an appointment */
     public void setLastUpdatedBy(String lastUpdatedBy) {
         this.lastUpdatedBy = lastUpdatedBy;
     }
 
     /** This function sets the user ID associated with an appointment.
-     * @param userId sets the user ID associated with an appointment */
+     * @param userId the user ID associated with an appointment */
     public void setUserId(int userId) {
         this.userId = userId;
     }
 
     /** This function sets the ID of the contact assigned to the appointment.
-     * @param contactId sets the ID of the contact assigned to the appointment */
+     * @param contactId the ID of the contact assigned to the appointment */
     public void setContactId(int contactId) {
         this.contactId = contactId;
     }
@@ -247,7 +247,7 @@ public class Appointment {
     }
 
     /** This function sets the name of the contact assigned to the appointment.
-     * @param contactName sets the name of the contact assigned to the appointment */
+     * @param contactName the name of the contact assigned to the appointment */
     public void setContactName(String contactName) {
         this.contactName = contactName;
     }
