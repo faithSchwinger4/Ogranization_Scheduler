@@ -16,7 +16,7 @@ public abstract class JDBC {
     private static final String password = "Passw0rd!";
     public static Connection connection;
 
-
+    /** This function opens a connection to the database */
     public static void openConnection(){
         try{
             Class.forName(driver); //locates the driver
@@ -28,6 +28,7 @@ public abstract class JDBC {
         }
     }
 
+    /** This function closes a connection to the database */
     //always close when done using
     public static void closeConnection(){
         try{
