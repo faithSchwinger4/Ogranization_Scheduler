@@ -25,18 +25,40 @@ import java.util.Locale;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+/** This class launches the LoginScreen and contains functions for user interaction with the screen. */
 public class LoginScreenController implements Initializable {
 
-    private static User currentUser;
+    /** This text-field is where the User enters their username. */
     public TextField usernameField;
+
+    /** This text-field is where the User enters their password. */
     public TextField passwordField;
+
+    /** This label is where the current Timezone is displayed. */
     public Label localTimeZoneLabel;
+
+    /** This label is where the invalid user message is displayed when an invalid username and password combination is
+     * entered. */
     public Label invalidUserLabel;
+
+    /** This label displays the phrase "User Login" above the entry fields in either French or English depending on the
+     * computer's location. */
     public Label userLoginLabel;
+
+    /** This label displays the word "Username" above the corresponding text-field in either French or English depending
+     * on the computer's language. */
     public Label usernameLabel;
+
+    /** This label displays the word "Password" above the corresponding text-field in either French or English depending
+     * on the computer's language. */
     public Label passwordLabel;
+
+    /** This button is pressed to attempt login. It displays the word "Login" in French or English depending on the
+     * user's computer language settings. */
     public Button loginButton;
 
+    /** This method initializes all the labels on the screen based on the computer's language settings using the
+     * default locale and a resourceBundle. */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //check local time zone, division, determine language to be spoken and translate
@@ -54,6 +76,15 @@ public class LoginScreenController implements Initializable {
 
     }
 
+    /** When the login button is pressed, this method gets the entered username and password from the fields and checks
+     * if it's a valid combination in the database with a query.
+     * <p>If valid, the user is granted access to the rest of the
+     *      * application. A confirmation alert will also pop up indicating whether or not an appointment is set to
+     *      begin within 15 minutes of the successful login. If it is, then appointment details are displayed as well.</p>
+     * <p>If it's invalid the user is given an error message stating the combination was invalid in either
+     *      * French or English depending on their computer's language setting. </p>
+     * <p>The login attempt is then logged and appended to a login_activity text file as being either successful or unsuccessful
+     *      * with the attempted username, password, and the date and time of the attempt.</p> */
     public void onActionLoginButtonPressed(ActionEvent actionEvent) throws IOException, SQLException {
         // take in username, password
         String username = usernameField.getText();

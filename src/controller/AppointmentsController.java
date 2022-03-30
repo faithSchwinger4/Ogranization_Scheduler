@@ -137,7 +137,7 @@ public class AppointmentsController implements Initializable {
         stage.show();
     }
 
-    /** This method launches the AddAppointment screen. */
+    /** This method launches the AddAppointment screen when the "Add" button is pressed. */
     public void onActionAddAppointment(ActionEvent actionEvent) throws IOException {
         AddAppointmentController.setCurrentUser(currentUser);
 
@@ -149,10 +149,10 @@ public class AppointmentsController implements Initializable {
         stage.show();
     }
 
-    /** This method launches the UpdateAppointment screen and sends the selected appointment from the table to the
-     * UpdateAppointment screen by setting a static appointment member in that class. If an appointment hasn't been
-     * selected from the appointment table then an error message will print to the screen so the user knows they forgot
-     * to select an appointment to update and remains on the Appointments screen. */
+    /** This method launches the UpdateAppointment screen when the "Update" button is pressed and sends the selected
+     * appointment from the table to the UpdateAppointment screen by setting a static appointment member in that class.
+     * If an appointment hasn't been selected from the appointment table then an error message will print to the screen
+     * so the user knows they forgot to select an appointment to update and remains on the Appointments screen. */
     public void onActionUpdateAppointment(ActionEvent actionEvent) throws IOException {
         try{
             Appointment selectedAppointment = appointmentTable.getSelectionModel().getSelectedItem();

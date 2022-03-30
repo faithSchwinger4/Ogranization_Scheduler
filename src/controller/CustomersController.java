@@ -25,32 +25,58 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+/** This class launches the Customers screen and contains functions for user interaction with the screen. */
 public class CustomersController implements Initializable {
 
+    /** Stores the current user's information as a User object. This allows the Appointment screen to pass through the
+     * current user's information. */
     private static User currentUser;
+
+    /** This label is where the deleted appointment information and confirmation are printed to. It is also where error
+     * statements are printed to. */
     public Label deletedCustomerConfirmation;
+
+    /** This table is where the customers are all displayed. */
     @FXML
     private TableView<Customer> customersTable;
+
+    /** This column is where the customerIds are listed for each Customer. */
     @FXML
     private TableColumn<Customer, Integer> customerIdColumn;
+
+    /** This column is where the names are listed for each Customer. */
     @FXML
     private TableColumn<Customer, String> nameColumn;
+
+    /** This column is where the addresses are listed for each Customer. */
     @FXML
     private TableColumn<Customer, String> addressColumn;
+
+    /** This column is where the countries are listed for each Customer. */
     @FXML
     private TableColumn<Customer, String> countryColumn;
+
+    /** This column is where the first-level-divisions are listed for each Customer. */
     @FXML
     private TableColumn<Customer, String> divisionColumn;
+
+    /** This column is where the postal codes are listed for each Customer. */
     @FXML
     private TableColumn<Customer, String> postalCodeColumn;
+
+    /** This column is where the phone numbers are listed for each Customer. */
     @FXML
     private TableColumn<Customer, String> phoneNumberColumn;
 
-    public static User getCurrentUser() {
-        return currentUser;}
+
+    /** This function sets the current user information. It allows the previous screen to pass through the information
+     * for the current user.
+     * @param currentUser is the User object representing the current user logged into the application */
     public static void setCurrentUser(User currentUser) {
         CustomersController.currentUser = currentUser;}
 
+    /** This method initializes the screen by filling the table with all the Customers from the database and sets the
+     * cellValueFactories for each column. */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<Customer> allCustomers = FXCollections.observableArrayList();
@@ -72,7 +98,7 @@ public class CustomersController implements Initializable {
         phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
     }
 
-
+    /** This method returns the user to the MainMenu screen without affecting any of the appointments. */
     public void onActionReturnToMainMenuButtonPressed(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/MainMenu.fxml"));
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
@@ -82,6 +108,7 @@ public class CustomersController implements Initializable {
         stage.show();
     }
 
+    /** This method launches the AddCustomer screen when the "Add" button is pressed. */
     public void onActionAddCustomerButtonPressed(ActionEvent actionEvent) throws IOException {
         AddCustomerController.setCurrentUser(currentUser);
 
@@ -93,6 +120,9 @@ public class CustomersController implements Initializable {
         stage.show();
     }
 
+    /** This method launches the UpdateCustomer screen when the "Update" button is pressed. It passes a Customer object
+     * to the screen by setting a static User member so that the customer's information can be initialized to the
+     * various fields on the next screen. */
     public void onActionUpdateCustomerButtonPressed(ActionEvent actionEvent) throws IOException {
         try {
             UpdateCustomerController.setCurrentUser(currentUser);
@@ -110,6 +140,9 @@ public class CustomersController implements Initializable {
         }
     }
 
+    /** This method deletes a Customer that was selected from the table from the database. It then displays the
+     * confirmation of and the specifics for the Customer that was deleted.It then updates the customer table
+     * to display only the current customers in the database. */
     public void onActionDeleteCustomer(ActionEvent actionEvent) throws SQLException {
         int customerIdToDelete = customersTable.getSelectionModel().getSelectedItem().getCustomerId();
 
