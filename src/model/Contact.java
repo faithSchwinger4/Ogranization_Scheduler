@@ -32,6 +32,30 @@ public class Contact {
         this.contactId = contactId;
     }
 
+    /** This function gets a contact's name.
+     * @return a contact's name */
+    public String getContactName() {
+        return contactName;
+    }
+
+    /** This function sets a contact's name.
+     * @param contactName sets a contact's name */
+    public void setContactName(String contactName) {
+        this.contactName = contactName;
+    }
+
+    /** This function gets a contact's email.
+     * @return a contact's email */
+    public String getEmail() {
+        return email;
+    }
+
+    /** This function sets a contact's email.
+     * @param email sets a contact's email */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     /** This function overrides the toString method so that it returns the contactName.
      * @return the name of the contact */
     @Override

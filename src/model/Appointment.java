@@ -179,4 +179,76 @@ public class Appointment {
     public int getContactId() {
         return contactId;
     }
+
+    /** This function sets the ID of an appointment
+     * @param appointmentId sets the ID of an appointment */
+    public void setAppointmentId(int appointmentId) {
+        this.appointmentId = appointmentId;
+    }
+
+    /** This function sets the description of an appointment
+     * @param description sets the description of an appointment */
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    /** This function gets the date and time an appointment was created
+     * @return gets the date and time an appointment was created */
+    public LocalDateTime getCreateDate() {
+        return createDate;
+    }
+
+    /** This function sets the date and time an appointment was created
+     * @param createDate  sets the date and time an appointment was created */
+    public void setCreateDate(LocalDateTime createDate) {
+        this.createDate = createDate;
+    }
+
+    /** This function gets the name of whoever created an appointment
+     * @return gets the name of whoever created an appointment */
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    /** This function sets the name of whoever created an appointment
+     * @param createdBy sets the name of whoever created an appointment */
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    /** This function gets the name of whoever last updated an appointment
+     * @return gets the name of whoever last updated an appointment */
+    public String getLastUpdatedBy() {
+        return lastUpdatedBy;
+    }
+
+    /** This function sets the name of whoever last updated an appointment
+     * @param lastUpdatedBy  sets the name of whoever last updated an appointment */
+    public void setLastUpdatedBy(String lastUpdatedBy) {
+        this.lastUpdatedBy = lastUpdatedBy;
+    }
+
+    /** This function sets the user ID associated with an appointment.
+     * @param userId sets the user ID associated with an appointment */
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    /** This function sets the ID of the contact assigned to the appointment.
+     * @param contactId sets the ID of the contact assigned to the appointment */
+    public void setContactId(int contactId) {
+        this.contactId = contactId;
+    }
+
+    /** This function gets the name of the contact assigned to the appointment.
+     * @return the name of the contact assigned to the appointment */
+    public String getContactName() {
+        return contactName;
+    }
+
+    /** This function sets the name of the contact assigned to the appointment.
+     * @param contactName sets the name of the contact assigned to the appointment */
+    public void setContactName(String contactName) {
+        this.contactName = contactName;
+    }
 }

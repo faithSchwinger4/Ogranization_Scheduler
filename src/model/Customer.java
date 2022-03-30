@@ -126,6 +126,87 @@ public class Customer {
     }
 
 
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+
+    public LocalDateTime getCreateDate() {
+        return createDate;
+    }
+
+
+    public void setCreateDate(LocalDateTime createDate) {
+        this.createDate = createDate;
+    }
+
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+
+    public String getLastUpdatedBy() {
+        return lastUpdatedBy;
+    }
+
+
+    public void setLastUpdatedBy(String lastUpdatedBy) {
+        this.lastUpdatedBy = lastUpdatedBy;
+    }
+
+
+    public void setDivisionId(int divisionId) {
+        this.divisionId = divisionId;
+    }
+
+
+    public void setCountryId(int countryId) {
+        this.countryId = countryId;
+    }
+
+
+    public String getDivisionName() {
+        return divisionName;
+    }
+
+
+    public void setDivisionName(String divisionName) {
+        this.divisionName = divisionName;
+    }
+
+
+    public String getCountryName() {
+        return countryName;
+    }
+
+
+    public void setCountryName(String countryName) {
+        this.countryName = countryName;
+    }
+
+
     /** This function overrides the toString method so that it returns the name of the customer.
      * @return the name of the customer */
     @Override
