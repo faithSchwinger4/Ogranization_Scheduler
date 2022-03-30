@@ -119,17 +119,22 @@ public class AppointmentsController implements Initializable {
     }
 
     public void onActionUpdateAppointment(ActionEvent actionEvent) throws IOException {
-        Appointment selectedAppointment = appointmentTable.getSelectionModel().getSelectedItem();
-        UpdateAppointmentController.setAppointment(selectedAppointment);
+        try{
+            Appointment selectedAppointment = appointmentTable.getSelectionModel().getSelectedItem();
+            UpdateAppointmentController.setAppointment(selectedAppointment);
 
-        UpdateAppointmentController.setCurrentUser(currentUser);
+            UpdateAppointmentController.setCurrentUser(currentUser);
 
-        Parent root = FXMLLoader.load(getClass().getResource("/view/UpdateAppointment.fxml"));
-        Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 400, 550);
-        stage.setTitle("Update Appointment");
-        stage.setScene(scene);
-        stage.show();
+            Parent root = FXMLLoader.load(getClass().getResource("/view/UpdateAppointment.fxml"));
+            Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root, 400, 550);
+            stage.setTitle("Update Appointment");
+            stage.setScene(scene);
+            stage.show();
+        }
+        catch(Exception e) {
+            deletedAppointmentConfirmation.setText("ERROR: Please select an appointment to update.");
+        }
     }
 
     public void onActionDeleteAppointment(ActionEvent actionEvent) throws SQLException {

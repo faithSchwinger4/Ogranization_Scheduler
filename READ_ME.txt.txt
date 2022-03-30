@@ -16,9 +16,9 @@ JDK Version: Java SE 17.0.1
 
 JavaFX Version: JavaFX-SDK-17.0.1
 
-Directions: To use this application, the user must first enter a valid username and password combination into the login screen. Upon a valid entry, the user will be directed to a main menu.
+Directions: To use this application, the user must first enter a valid username and password combination into the login screen. Upon a valid entry, the user will be directed to a main menu. There will also be a pop-up alert notifying if there is an upcoming appointment in the next 15 minutes or not.
 
-This main menu has four buttons and one alert at the bottom of the page. Each button provides a different function, and the alert notifies the user whether or not there is an appointment occuring within 15 minutes of logging into the application.
+This main menu has four buttons. Each button goes to a new screen with a specific function as explained below.
 
 The first button directs the user to the main screen for viewing customer information. From this page there are buttons allowing a user to create new customers, update existing ones, or delete customers and their appointments.
 

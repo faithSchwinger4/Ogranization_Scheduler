@@ -26,6 +26,6 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="deletedAppointmentConfirmation" layoutX="34.0" layoutY="459.0" prefHeight="17.0" prefWidth="774.0" />
+      <Label fx:id="deletedCustomerConfirmation" layoutX="34.0" layoutY="459.0" prefHeight="17.0" prefWidth="774.0" />
    </children>
 </AnchorPane>

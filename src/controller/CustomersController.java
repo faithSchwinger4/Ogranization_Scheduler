@@ -28,7 +28,7 @@ import java.util.ResourceBundle;
 public class CustomersController implements Initializable {
 
     private static User currentUser;
-    public Label deletedAppointmentConfirmation;
+    public Label deletedCustomerConfirmation;
     @FXML
     private TableView<Customer> customersTable;
     @FXML
@@ -94,15 +94,20 @@ public class CustomersController implements Initializable {
     }
 
     public void onActionUpdateCustomerButtonPressed(ActionEvent actionEvent) throws IOException {
-        UpdateCustomerController.setCurrentUser(currentUser);
-        UpdateCustomerController.setCustomerToUpdate(customersTable.getSelectionModel().getSelectedItem());
+        try {
+            UpdateCustomerController.setCurrentUser(currentUser);
+            UpdateCustomerController.setCustomerToUpdate(customersTable.getSelectionModel().getSelectedItem());
 
-        Parent root = FXMLLoader.load(getClass().getResource("/view/UpdateCustomer.fxml"));
-        Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 400, 550);
-        stage.setTitle("Update Customer");
-        stage.setScene(scene);
-        stage.show();
+            Parent root = FXMLLoader.load(getClass().getResource("/view/UpdateCustomer.fxml"));
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root, 400, 550);
+            stage.setTitle("Update Customer");
+            stage.setScene(scene);
+            stage.show();
+        }
+        catch(Exception e) {
+            deletedCustomerConfirmation.setText("ERROR: Please select a customer to update.");
+        }
     }
 
     public void onActionDeleteCustomer(ActionEvent actionEvent) throws SQLException {
@@ -124,6 +129,6 @@ public class CustomersController implements Initializable {
         ObservableList<Customer> currentCustomers = CustomerQuery.getAllCustomers();
         customersTable.setItems(currentCustomers);
 
-        deletedAppointmentConfirmation.setText("Customer " + customerIdToDelete + " was deleted.");
+        deletedCustomerConfirmation.setText("Customer " + customerIdToDelete + " was deleted.");
     }
 }
