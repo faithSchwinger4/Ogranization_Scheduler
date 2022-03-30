@@ -23,13 +23,12 @@ import model.Contact;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
+/** This class launches the AddAppointment screen and contains functions for user interaction with the screen. */
 public class AddAppointmentController implements Initializable {
 
     /** The field for the new appointment title to be input. */

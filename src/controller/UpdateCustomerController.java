@@ -26,27 +26,53 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 
+/** This class launches the UpdateCustomer screen and contains functions for user interaction with the screen. */
 public class UpdateCustomerController implements Initializable {
 
+    /** Stores the current user's information as a User object. This allows the Appointment screen to pass through the
+     * current user's information. */
     private static User currentUser;
+
+    /** This stores the customer object the user chose to update in the Customers screen. It is used to initialize
+     * all the fields on this screen. */
     private static Customer customerToUpdate;
 
+
+    /** The field for the customer ID to be displayed that doesn't allow the user to edit it. */
     public TextField customerIdField;
+
+    /** The field for the customer's name to be updated. */
     public TextField customerNameField;
+
+    /** The field for the customer's address to be updated. */
     public TextField customerAddressField;
+
+    /** The combo box for the customer's country to be updated. */
     public ComboBox<Country> customerCountryComboBox;
+
+    /** The combo box for the customer's first-level-division to be updated. */
     public ComboBox<FirstLevelDivision> customerDivisionComboBox;
+
+    /** The field for the customer's postal code to be updated. */
     public TextField customerPostalCodeField;
+
+    /** The field for the customer's phone number to be updated. */
     public TextField customerPhoneNumberField;
 
-    public static User getCurrentUser() {
-        return currentUser;
-    }
 
+    /** This function sets the current user information. It allows the previous screen to pass through the information
+     * for the current user.
+     * @param currentUser is the User object representing the current user logged into the application */
     public static void setCurrentUser(User currentUser) {
         UpdateCustomerController.currentUser = currentUser;
     }
 
+
+    /** This method initializes the country comboBox with all the possible country options.
+     * <p>
+     *     It also updates each text-field and comboBox with information from the Customer object the user selected from
+     *     the Customers screen to update.
+     * </p> */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<Country> allCountries = FXCollections.observableArrayList();
@@ -96,6 +122,8 @@ public class UpdateCustomerController implements Initializable {
         customerDivisionComboBox.setValue(customerDivision);
     }
 
+    /** This method returns the User to the Customers scene without updating any customer information in the database
+     * when the cancel button is pressed. */
     public void onActionCancelButtonPressed(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/Customers.fxml"));
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
@@ -105,6 +133,9 @@ public class UpdateCustomerController implements Initializable {
         stage.show();
     }
 
+    /** When the save button is clicked, this method pulls all the information from the text-fields and comboBoxes and
+     * uses it to update an existing customer in the database with a query utilizing the customer's ID. It then returns
+     * the user to the Customers screen of the application. */
     public void onActionSaveButtonPressed(ActionEvent actionEvent) throws IOException, SQLException {
         int customerId = customerToUpdate.getCustomerId();
         String customerName = customerNameField.getText();
@@ -126,14 +157,16 @@ public class UpdateCustomerController implements Initializable {
         stage.show();
     }
 
-    public static Customer getCustomerToUpdate() {
-        return customerToUpdate;
-    }
-
+    /** This function sets the information for the customer the user wants to update in the form of a Customer object.
+     * This allows it to be passed from the Customers screen to the UpdateCustomers screen.
+     * @param customerToUpdate is the Customer object storing the original customer information */
     public static void setCustomerToUpdate(Customer customerToUpdate) {
         UpdateCustomerController.customerToUpdate = customerToUpdate;
     }
 
+    /** When a country is selected from the countryComboBox, this method then sets the divisionComboBox options to the
+     * corresponding divisions that are in the selected country. It does this by clearing the old divisions from the
+     * comboBox and then adding in the ones that correspond to the selected country. */
     public void onActionCountrySelected(ActionEvent actionEvent) throws SQLException {
         customerDivisionComboBox.setValue(null);
         customerDivisionComboBox.getItems().clear();

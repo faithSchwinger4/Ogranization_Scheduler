@@ -27,6 +27,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ResourceBundle;
 
+/** This class launches the UpdateAppointment screen and contains functions for user interaction with the screen. */
 public class UpdateAppointmentController implements Initializable {
 
     /** Stores the current user's information as a User object. This allows the Appointment screen to pass through the
