@@ -94,7 +94,6 @@ public class AppointmentsController implements Initializable {
         endDateAndTime.setCellValueFactory(appointment ->
                 new SimpleStringProperty(appointment.getValue().getEnd().format(formatter)));
 
-        appointmentTable.getColumns().addAll(appointmentId);
         appointmentTable.getSortOrder().add(appointmentId);
         appointmentTable.sort();
     }
