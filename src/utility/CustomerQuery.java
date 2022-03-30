@@ -10,6 +10,10 @@ import java.time.LocalDateTime;
 /** This class holds methods used to pull information from the database regarding Customer records. */
 public abstract class CustomerQuery {
 
+    /** This function uses a SELECT query to the database to get all the customers located in the database. Each record
+     * returned from the query is used to create a new Customer object which is then added to an ObservableList. This List
+     * is returned by the function.
+     * @return the ObservableList of all Customer objects created from the database */
     public static ObservableList<Customer> getAllCustomers() throws SQLException {
         ObservableList<Customer> allCustomers = FXCollections.observableArrayList();
 
@@ -45,6 +49,18 @@ public abstract class CustomerQuery {
         return allCustomers;
     }
 
+    /** This function uses an INSERT query to add a new customer record to the database. Each parameter corresponds to
+     * a piece of customer information in the database.
+     * @param lastUpdate the date and time this customer is being added and therefore updated
+     * @param lastUpdatedBy the user who created therefore last updated this customer
+     * @param createDate the date and time this customer is being created
+     * @param createdBy the user who created this customer
+     * @param divisionId the ID number for the division the customer lives in
+     * @param customerName the name of the customer
+     * @param postalCode the postal code of the customer
+     * @param address the address of the customer
+     * @param phone the phone number of the customer
+     * @return the number of rows returned by the execution of the INSERT query, validating that the insert was successful*/
     public static int insert(String customerName, String address, String postalCode, String phone,
                              Timestamp createDate, String createdBy, Timestamp lastUpdate,
                              String lastUpdatedBy, Integer divisionId) throws SQLException {
@@ -68,6 +84,16 @@ public abstract class CustomerQuery {
         return rowsAffected;
     }
 
+    /** This function updates a customer record in the database using an UPDATE query and information from the parameters.
+     * @param address the updated address of the customer
+     * @param postalCode the updated postal code of the customer
+     * @param customerName the updated name of the customer
+     * @param divisionId the updated division ID the customer lives in
+     * @param lastUpdatedBy the date and time of the update
+     * @param lastUpdate the user making the update
+     * @param customerId the ID of the customer being updated
+     * @param phoneNumber the updated phone number of the customer
+     * @return the number of rows returned by the execution of the DELETE query, validating that the delete was successful*/
     public static int update(int customerId, String customerName, String address, String postalCode, String phoneNumber,
                              Timestamp lastUpdate, String lastUpdatedBy, int divisionId) throws SQLException {
 
@@ -87,6 +113,10 @@ public abstract class CustomerQuery {
         return rowsAffected;
     }
 
+    /**  This method executes a DELETE query on the database using the provided Customer ID to delete said customer from
+     * the database.
+     * @param customerId the ID number of the customer to be deleted
+     * @return the number of rows returned by the execution of the DELETE query, validating that the delete was successful*/
     public static int delete(int customerId) throws SQLException {
         String sql = "DELETE FROM Customers WHERE Customer_ID = ?";
         PreparedStatement ps = JDBC.connection.prepareStatement(sql);

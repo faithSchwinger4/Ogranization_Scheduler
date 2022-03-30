@@ -11,7 +11,9 @@ import java.sql.SQLException;
 /** This class holds methods used to pull information from the database regarding Contact records. */
 public class ContactQuery {
 
-    /**  */
+    /** This function gets all the Contact records from the database and creates a Contact object from each record.
+     * It then adds the record to an ObservableList returned by the function.
+     * @return an ObservableList of all Contacts in the database */
     public static ObservableList<Contact> getAllContacts() throws SQLException {
         ObservableList<Contact> allContacts = FXCollections.observableArrayList();
 
@@ -28,6 +30,9 @@ public class ContactQuery {
         return allContacts;
     }
 
+    /** This function gets the ID for a specified contact's name from the database.
+     * @param contactName the name of the contact
+     * @return the ID number of the contact */
     public static int findContactId(String contactName) throws SQLException {
         String sql = "SELECT Contact_ID FROM Contacts WHERE Contact_Name = ?";
         PreparedStatement ps = JDBC.connection.prepareStatement(sql);

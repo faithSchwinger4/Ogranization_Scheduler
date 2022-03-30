@@ -11,6 +11,9 @@ import java.time.LocalDateTime;
 /** This class holds methods used to pull information from the database regarding Country records. */
 public class CountryQuery {
 
+    /** This function gets all the countries in the database using a SELECT query. It then creates a Country object
+     * from each country record and adds it to an ObservableList returned by the function.
+     * @return an ObservableList of every country in the database in the form of Country objects */
     public static ObservableList<Country> getAllCountries() throws SQLException {
         ObservableList<Country> allCountries = FXCollections.observableArrayList();
 
@@ -33,6 +36,10 @@ public class CountryQuery {
         return allCountries;
     }
 
+    /** This function uses a SELECT query to the database to get a specific country record from the database and create a new
+     * Country object with it.
+     * @param countryId the ID of the country in the database used to locate it
+     * @return the Country object created by the query using the country ID number */
     public static Country getCountryFromID(int countryId) throws SQLException {
         String sql = "SELECT * FROM Countries WHERE Country_ID = ?";
         PreparedStatement ps = JDBC.connection.prepareStatement(sql);
