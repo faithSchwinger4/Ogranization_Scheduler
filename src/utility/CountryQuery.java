@@ -8,6 +8,7 @@ import java.lang.module.ResolutionException;
 import java.sql.*;
 import java.time.LocalDateTime;
 
+/** This class holds methods used to pull information from the database regarding Country records. */
 public class CountryQuery {
 
     public static ObservableList<Country> getAllCountries() throws SQLException {

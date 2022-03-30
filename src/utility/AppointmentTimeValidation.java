@@ -6,6 +6,7 @@ import model.Appointment;
 import java.sql.SQLException;
 import java.time.*;
 
+/** This class holds methods used to validate the times a user attempts to assign to an appointment. */
 public class AppointmentTimeValidation {
 
     public static boolean noConflictingAppointment(Appointment appointment, int customerId, LocalDateTime start, LocalDateTime end) throws SQLException {

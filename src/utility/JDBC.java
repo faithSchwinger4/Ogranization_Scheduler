@@ -3,6 +3,7 @@ package utility;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+/** This class holds methods used to connect and disconnect from the database. */
 public abstract class JDBC {
 
     private static final String protocol = "jdbc";

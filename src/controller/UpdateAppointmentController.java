@@ -117,7 +117,7 @@ public class UpdateAppointmentController implements Initializable {
         datePicker.setValue(appointment.getStart().toLocalDate());
 
         // fill each time comboBox with all time options
-        ObservableList<LocalTime> localTimes = TimeConversion.createTimeList();
+        ObservableList<LocalTime> localTimes = TimeHelper.createTimeList();
         localTimes.forEach((t) -> {
             startTimeComboBox.getItems().add(t);
         });
@@ -184,8 +184,8 @@ public class UpdateAppointmentController implements Initializable {
         String type = typeField.getText();
         Contact contact = (Contact) contactComboBox.getValue();
         int contactId = contact.getContactId();
-        LocalDateTime start = TimeConversion.createLocalDateTime(datePicker.getValue(), (LocalTime) startTimeComboBox.getValue());
-        LocalDateTime end = TimeConversion.createLocalDateTime(datePicker.getValue(), (LocalTime) endTimeComboBox.getValue());
+        LocalDateTime start = TimeHelper.createLocalDateTime(datePicker.getValue(), (LocalTime) startTimeComboBox.getValue());
+        LocalDateTime end = TimeHelper.createLocalDateTime(datePicker.getValue(), (LocalTime) endTimeComboBox.getValue());
         LocalDateTime lastUpdate = LocalDateTime.now(); //use for lastUpdate
         String lastUpdatedBy = currentUser.getUserName(); //use for lastUpdateBy
         int customerId = (int) customerIdComboBox.getValue();

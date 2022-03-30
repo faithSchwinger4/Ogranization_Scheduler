@@ -7,6 +7,7 @@ import model.Customer;
 import java.sql.*;
 import java.time.LocalDateTime;
 
+/** This class holds methods used to pull information from the database regarding Customer records. */
 public abstract class CustomerQuery {
 
     public static ObservableList<Customer> getAllCustomers() throws SQLException {

@@ -7,7 +7,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-public class TimeConversion {
+/** This class holds methods used to convert time objects and create an observable list of times. */
+public class TimeHelper {
 
     public static LocalDateTime createLocalDateTime(LocalDate localDate, LocalTime localTime) {
         LocalDateTime newDateTime = localDate.atTime(localTime);

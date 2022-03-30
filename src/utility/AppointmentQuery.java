@@ -5,10 +5,9 @@ import javafx.collections.ObservableList;
 import model.Appointment;
 
 import java.sql.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.Month;
 
+/** This class holds methods used to pull information from the database regarding appointment records. */
 public class AppointmentQuery {
 
     public static ObservableList<Appointment> getAllAppointments() throws SQLException {

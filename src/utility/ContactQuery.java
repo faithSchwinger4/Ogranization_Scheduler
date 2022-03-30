@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/** This class holds methods used to pull information from the database regarding Contact records. */
 public class ContactQuery {
 
     public static ObservableList<Contact> getAllContacts() throws SQLException {

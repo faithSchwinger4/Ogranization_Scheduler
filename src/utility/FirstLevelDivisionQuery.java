@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 
+/** This class holds methods used to pull information from the database regarding First-Level-Division records. */
 public class FirstLevelDivisionQuery {
 
     public static ObservableList<FirstLevelDivision> getDivisionsInOneCountry(int countryId) throws SQLException {

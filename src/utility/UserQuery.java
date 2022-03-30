@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/** This class holds methods used to pull information from the database regarding User records. */
 public class UserQuery {
 
     public static ObservableList<User> getAllUsers() throws SQLException {
