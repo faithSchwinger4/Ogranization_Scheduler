@@ -1,6 +1,7 @@
 package controller;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -70,7 +71,7 @@ public class SchedulesController implements Initializable {
      * and end dates and times properly. */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ObservableList<Contact> allContacts = null;
+        ObservableList<Contact> allContacts = FXCollections.observableArrayList();;
         try {
             allContacts = ContactQuery.getAllContacts();
         } catch (SQLException e) {

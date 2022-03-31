@@ -130,7 +130,7 @@ public class UpdateAppointmentController implements Initializable {
         endTimeComboBox.setValue(appointment.getEnd().toLocalTime());
 
         // create customerId combobox list
-        ObservableList<Customer> allCustomers = null;
+        ObservableList<Customer> allCustomers = FXCollections.observableArrayList();;
         try {
             allCustomers = CustomerQuery.getAllCustomers();
         } catch (SQLException e) {
@@ -144,7 +144,7 @@ public class UpdateAppointmentController implements Initializable {
         customerIdComboBox.setValue(appointment.getCustomerId());
 
         // User Id options into comboBox
-        ObservableList<User> allUsers = null;
+        ObservableList<User> allUsers = FXCollections.observableArrayList();;
         try {
             allUsers = UserQuery.getAllUsers();
         } catch (SQLException e) {

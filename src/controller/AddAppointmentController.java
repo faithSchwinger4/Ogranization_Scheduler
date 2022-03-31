@@ -110,7 +110,7 @@ public class AddAppointmentController implements Initializable {
         });
 
         // get all Customers and set the ID options to the comboBox
-        ObservableList<Customer> allCustomers = null;
+        ObservableList<Customer> allCustomers = FXCollections.observableArrayList();;
         try {
             allCustomers = CustomerQuery.getAllCustomers();
         } catch (SQLException e) {
@@ -120,7 +120,7 @@ public class AddAppointmentController implements Initializable {
             customerComboBox.getItems().add(c.getCustomerId());
         });
 
-        ObservableList<User> allUsers = null;
+        ObservableList<User> allUsers = FXCollections.observableArrayList();;
         try {
             allUsers = UserQuery.getAllUsers();
         } catch (SQLException e) {

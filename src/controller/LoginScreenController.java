@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -132,7 +133,7 @@ public class LoginScreenController implements Initializable {
                     rb.getString("Alert"));
 
             // get all appointments
-            ObservableList<Appointment> allAppointments = null;
+            ObservableList<Appointment> allAppointments = FXCollections.observableArrayList();
             try {
                 allAppointments = AppointmentQuery.getAllAppointments();
             } catch (SQLException e) {

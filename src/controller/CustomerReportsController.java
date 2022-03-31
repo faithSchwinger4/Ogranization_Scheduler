@@ -44,7 +44,7 @@ public class CustomerReportsController implements Initializable {
      * comboBox. */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ObservableList<Appointment> allAppointments = null;
+        ObservableList<Appointment> allAppointments = FXCollections.observableArrayList();;
         try {
             allAppointments = AppointmentQuery.getAllAppointments();
         } catch (SQLException e) {

@@ -96,7 +96,7 @@ public class AppointmentsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // use a query to get all the appointments in the database
-        ObservableList<Appointment> allAppointments = null;
+        ObservableList<Appointment> allAppointments = FXCollections.observableArrayList();;
         try {
             allAppointments = AppointmentQuery.getAllAppointments();
         } catch (SQLException e) {
